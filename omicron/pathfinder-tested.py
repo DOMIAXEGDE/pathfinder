@@ -984,34 +984,14 @@ def run_gui(args: argparse.Namespace) -> int:
         canvas.delete("all")
         if not state:
             status.config(text="No state")
-            tk_image_holder["image"] = None
             return
-
         path = Path(state["image_path"])
-        if not path.exists():
-            status.config(text=f"Missing image for {state['id']}: {path}")
-            tk_image_holder["image"] = None
-            return
-
         image = Image.open(path).convert("RGB")
-        cw = canvas.winfo_width()
-        ch = canvas.winfo_height()
-        if cw <= 20 or ch <= 20:
-            status.config(text=f"{state['id']} | waiting for canvas layout")
-            tk_image_holder["image"] = None
-            return
-
-        max_w = max(1, cw - 20)
-        max_h = max(1, ch - 20)
+        cw = max(1, canvas.winfo_width() or 640)
+        ch = max(1, canvas.winfo_height() or 480)
         display = image.copy()
-        resampling = getattr(getattr(Image, "Resampling", Image), "LANCZOS", Image.BICUBIC)
-        display.thumbnail((max_w, max_h), resampling)
-        if display.width <= 0 or display.height <= 0:
-            status.config(text=f"{state['id']} | image has no drawable size")
-            tk_image_holder["image"] = None
-            return
-
-        tk_image = ImageTk.PhotoImage(display, master=root)
+        display.thumbnail((cw - 20, ch - 20))
+        tk_image = ImageTk.PhotoImage(display)
         tk_image_holder["image"] = tk_image
         canvas.create_image(cw // 2, ch // 2, image=tk_image, anchor=tk.CENTER)
         status.config(text=f"{state['id']} | {image.width}x{image.height} | {shorten(state['pixel_sha256'], 22)}")
