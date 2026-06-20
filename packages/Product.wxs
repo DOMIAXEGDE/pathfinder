@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product
+    Id="*"
+    Name="Pathfinder"
+    Language="1033"
+    Version="0.1.0"
+    Manufacturer="Pathfinder"
+    UpgradeCode="{D2B9DC3A-C802-48B3-B77D-6E54EF123C4A}">
+
+    <Package
+      InstallerVersion="500"
+      Compressed="yes"
+      InstallScope="perMachine"
+      Platform="x64"
+      Description="Pathfinder image-indexed tensor runtime" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of Pathfinder is already installed." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+    <UIRef Id="WixUI_InstallDir" />
+    <UIRef Id="WixUI_ErrorProgressText" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFiles64Folder">
+        <Directory Id="INSTALLFOLDER" Name="Pathfinder" />
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="Pathfinder" />
+      </Directory>
+    </Directory>
+
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcuts" Guid="{34BCF62B-FE8D-4D22-8194-F6B9894750AE}" Win64="yes">
+        <Shortcut
+          Id="PathfinderDesktopShortcut"
+          Name="Pathfinder"
+          Description="Open the Pathfinder desktop launcher"
+          Target="[INSTALLFOLDER]Pathfinder.exe"
+          Arguments="desktop"
+          WorkingDirectory="INSTALLFOLDER" />
+        <Shortcut
+          Id="PathfinderCliShortcut"
+          Name="Pathfinder CLI"
+          Description="Open Pathfinder command help"
+          Target="[INSTALLFOLDER]Pathfinder.exe"
+          Arguments="--help"
+          WorkingDirectory="INSTALLFOLDER" />
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall" />
+        <RegistryValue
+          Root="HKCU"
+          Key="Software\Pathfinder"
+          Name="StartMenuShortcuts"
+          Type="integer"
+          Value="1"
+          KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <Feature Id="DefaultFeature" Title="Pathfinder" Level="1">
+      <ComponentGroupRef Id="PathfinderFiles" />
+      <ComponentRef Id="ApplicationShortcuts" />
+    </Feature>
+  </Product>
+</Wix>
