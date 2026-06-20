@@ -1,0 +1,1765 @@
+{
+  "type": "tensor-workspace-v1",
+  "current_bank_id": "1",
+  "banks": {
+    "1": {
+      "id": "1",
+      "title": "pathfinder.manifest",
+      "raw_id": null,
+      "registers": {
+        "1": {
+          "type": {
+            "value": "pathfinder-manifest-v1",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "created_at": {
+            "value": "2026-06-20T11:16:56+00:00",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "seed_image": {
+            "value": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0000.png",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "side_length": {
+            "value": "700",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "grid_pattern_signature": {
+            "value": "{\"side_length\": 700, \"signature_sha256\": \"7df36716ae6bc10b0494a8633ea9e4f81ec6342cc6a7a9bc224e25dcde2ccf7a\", \"source\": \"state-gen.py\", \"state_count\": 12, \"state_titles\": [\"Text Session\", \"Create\", \"Read\", \"Update\", \"Delete\", \"Batch Create\", \"Batch Read\", \"Batch Update\", \"Batch Delete\", \"Python Scripts\", \"Configuration\", \"Persistence\"]}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        }
+      },
+      "meta": {}
+    },
+    "2": {
+      "id": "2",
+      "title": "image.states",
+      "raw_id": null,
+      "registers": {
+        "0": {
+          "id": {
+            "value": "I0",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "image_path": {
+            "value": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0000.png",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "rgb_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "hex_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "side_length": {
+            "value": "700",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "pixel_sha256": {
+            "value": "0bc45037d076edfc159c8c9f14cc2a8402db786090719c5efb66fc46ee5d4006",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "source_state": {
+            "value": "null",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "transform_index": {
+            "value": "null",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "1": {
+          "id": {
+            "value": "I1",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "image_path": {
+            "value": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0001.png",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "rgb_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "hex_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "side_length": {
+            "value": "700",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "pixel_sha256": {
+            "value": "5b8828255dffe2359078cc4804efae1d1e2198d3eccb44dcbf43b20975eb19e4",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "source_state": {
+            "value": "I0",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "transform_index": {
+            "value": "1",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "2": {
+          "id": {
+            "value": "I2",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "image_path": {
+            "value": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0002.png",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "rgb_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "hex_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "side_length": {
+            "value": "700",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "pixel_sha256": {
+            "value": "72319365768c71968b3597269675a2babf5bd254e454633144cb939067169a8f",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "source_state": {
+            "value": "I1",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "transform_index": {
+            "value": "2",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "3": {
+          "id": {
+            "value": "I3",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "image_path": {
+            "value": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0003.png",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "rgb_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "hex_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "side_length": {
+            "value": "700",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "pixel_sha256": {
+            "value": "97156d4d2aa4e5ab27df8a8ea909a7e15b167167a8a9624cd0752564bcc1c413",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "source_state": {
+            "value": "I2",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "transform_index": {
+            "value": "3",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "4": {
+          "id": {
+            "value": "I4",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "image_path": {
+            "value": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0004.png",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "rgb_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "hex_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "side_length": {
+            "value": "700",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "pixel_sha256": {
+            "value": "dc03f910cdbba257cc4dc24f7fc63807973a418df20f19602711b034c1e9d762",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "source_state": {
+            "value": "I3",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "transform_index": {
+            "value": "4",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "5": {
+          "id": {
+            "value": "I5",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "image_path": {
+            "value": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0005.png",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "rgb_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "hex_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "side_length": {
+            "value": "700",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "pixel_sha256": {
+            "value": "d77612f8fd1cb8573971bd3179bd1ca95d32d01706899bc17b3cbcb4704dfedd",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "source_state": {
+            "value": "I4",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "transform_index": {
+            "value": "5",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "6": {
+          "id": {
+            "value": "I6",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "image_path": {
+            "value": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0006.png",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "rgb_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "hex_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "side_length": {
+            "value": "700",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "pixel_sha256": {
+            "value": "b9b4180c02e192959c0acdcd5a6e5e95b8b91cf4a7a3bdd4ee6d134240b11c22",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "source_state": {
+            "value": "I5",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "transform_index": {
+            "value": "6",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "7": {
+          "id": {
+            "value": "I7",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "image_path": {
+            "value": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0007.png",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "rgb_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "hex_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "side_length": {
+            "value": "700",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "pixel_sha256": {
+            "value": "66eda921759b83bf76eb4bdc76fd7be3fde5530a6c94b41675f373fc312caa48",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "source_state": {
+            "value": "I6",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "transform_index": {
+            "value": "7",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "8": {
+          "id": {
+            "value": "I8",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "image_path": {
+            "value": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0008.png",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "rgb_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "hex_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "side_length": {
+            "value": "700",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "pixel_sha256": {
+            "value": "bcbe4686ced0a53ca51c6b6d38034d4837770f08b735fe87c1eaa481e230b609",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "source_state": {
+            "value": "I7",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "transform_index": {
+            "value": "8",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "9": {
+          "id": {
+            "value": "I9",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "image_path": {
+            "value": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0009.png",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "rgb_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "hex_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "side_length": {
+            "value": "700",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "pixel_sha256": {
+            "value": "a633b38f998b8ed8e8c83f7fd8c49bd88adb190156a228ee559b626d01495027",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "source_state": {
+            "value": "I8",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "transform_index": {
+            "value": "9",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "10": {
+          "id": {
+            "value": "I10",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "image_path": {
+            "value": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0010.png",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "rgb_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "hex_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "side_length": {
+            "value": "700",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "pixel_sha256": {
+            "value": "bc12659eb2c2b596f0ede2dd600629afcd8359d5ed3cfeb94def3ee688e7dff6",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "source_state": {
+            "value": "I9",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "transform_index": {
+            "value": "10",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "11": {
+          "id": {
+            "value": "I11",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "image_path": {
+            "value": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0011.png",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "rgb_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "hex_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "side_length": {
+            "value": "700",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "pixel_sha256": {
+            "value": "0a1928685331d91bddcf9cb5ed75fbeb2dafc6f36b8a1c68e4857f354d3187f8",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "source_state": {
+            "value": "I10",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "transform_index": {
+            "value": "11",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        }
+      },
+      "meta": {}
+    },
+    "3": {
+      "id": "3",
+      "title": "basis.tensor",
+      "raw_id": null,
+      "registers": {
+        "1": {
+          "engine": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "config_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "json_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "seed_file": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "seed_build_path": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "seed_metadata": {
+            "value": "{\"basis_address\": \"text-editor-session\", \"basis_row_count\": \"12\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "B_raw_sha256": {
+            "value": "",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        }
+      },
+      "meta": {}
+    },
+    "4": {
+      "id": "4",
+      "title": "transforms",
+      "raw_id": null,
+      "registers": {
+        "1": {
+          "from": {
+            "value": "I0",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "to": {
+            "value": "I1",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "parameters": {
+            "value": "{\"kind\": \"text-editor-session-transition\", \"operation\": \"crud.create\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "2": {
+          "from": {
+            "value": "I1",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "to": {
+            "value": "I2",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "parameters": {
+            "value": "{\"kind\": \"text-editor-session-transition\", \"operation\": \"crud.read\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "3": {
+          "from": {
+            "value": "I2",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "to": {
+            "value": "I3",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "parameters": {
+            "value": "{\"kind\": \"text-editor-session-transition\", \"operation\": \"crud.update\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "4": {
+          "from": {
+            "value": "I3",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "to": {
+            "value": "I4",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "parameters": {
+            "value": "{\"kind\": \"text-editor-session-transition\", \"operation\": \"crud.delete\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "5": {
+          "from": {
+            "value": "I4",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "to": {
+            "value": "I5",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "parameters": {
+            "value": "{\"kind\": \"text-editor-session-transition\", \"operation\": \"batch.create\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "6": {
+          "from": {
+            "value": "I5",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "to": {
+            "value": "I6",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "parameters": {
+            "value": "{\"kind\": \"text-editor-session-transition\", \"operation\": \"batch.read\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "7": {
+          "from": {
+            "value": "I6",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "to": {
+            "value": "I7",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "parameters": {
+            "value": "{\"kind\": \"text-editor-session-transition\", \"operation\": \"batch.update\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "8": {
+          "from": {
+            "value": "I7",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "to": {
+            "value": "I8",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "parameters": {
+            "value": "{\"kind\": \"text-editor-session-transition\", \"operation\": \"batch.delete\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "9": {
+          "from": {
+            "value": "I8",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "to": {
+            "value": "I9",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "parameters": {
+            "value": "{\"kind\": \"text-editor-session-transition\", \"operation\": \"python.plugins\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "10": {
+          "from": {
+            "value": "I9",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "to": {
+            "value": "I10",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "parameters": {
+            "value": "{\"kind\": \"text-editor-session-transition\", \"operation\": \"config.style\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "11": {
+          "from": {
+            "value": "I10",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "to": {
+            "value": "I11",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "parameters": {
+            "value": "{\"kind\": \"text-editor-session-transition\", \"operation\": \"session.persistence\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        }
+      },
+      "meta": {}
+    },
+    "5": {
+      "id": "5",
+      "title": "bootstrap.sequence",
+      "raw_id": null,
+      "registers": {
+        "1": {
+          "0": {
+            "value": "I0",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "1": {
+            "value": "I1",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "2": {
+            "value": "I2",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "3": {
+            "value": "I3",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "4": {
+            "value": "I4",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "5": {
+            "value": "I5",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "6": {
+            "value": "I6",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "7": {
+            "value": "I7",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "8": {
+            "value": "I8",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "9": {
+            "value": "I9",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "10": {
+            "value": "I10",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "11": {
+            "value": "I11",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "2": {
+          "boot": {
+            "value": "I0",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "create": {
+            "value": "I1",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "read": {
+            "value": "I2",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "update": {
+            "value": "I3",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "delete": {
+            "value": "I4",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "batch-create": {
+            "value": "I5",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "batch-read": {
+            "value": "I6",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "batch-update": {
+            "value": "I7",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "batch-delete": {
+            "value": "I8",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "plugins": {
+            "value": "I9",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "config": {
+            "value": "I10",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "persist": {
+            "value": "I11",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        }
+      },
+      "meta": {}
+    },
+    "6": {
+      "id": "6",
+      "title": "runtime.surface",
+      "raw_id": null,
+      "registers": {
+        "0": {
+          "cell": {
+            "value": "{\"cell_path\": \"0\", \"state_id\": \"I0\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "1": {
+          "cell": {
+            "value": "{\"cell_path\": \"1\", \"state_id\": \"I1\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "2": {
+          "cell": {
+            "value": "{\"cell_path\": \"2\", \"state_id\": \"I2\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "3": {
+          "cell": {
+            "value": "{\"cell_path\": \"3\", \"state_id\": \"I3\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "4": {
+          "cell": {
+            "value": "{\"cell_path\": \"4\", \"state_id\": \"I4\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "5": {
+          "cell": {
+            "value": "{\"cell_path\": \"5\", \"state_id\": \"I5\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "6": {
+          "cell": {
+            "value": "{\"cell_path\": \"6\", \"state_id\": \"I6\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "7": {
+          "cell": {
+            "value": "{\"cell_path\": \"7\", \"state_id\": \"I7\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "8": {
+          "cell": {
+            "value": "{\"cell_path\": \"8\", \"state_id\": \"I8\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "9": {
+          "cell": {
+            "value": "{\"cell_path\": \"9\", \"state_id\": \"I9\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "10": {
+          "cell": {
+            "value": "{\"cell_path\": \"10\", \"state_id\": \"I10\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "11": {
+          "cell": {
+            "value": "{\"cell_path\": \"11\", \"state_id\": \"I11\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        }
+      },
+      "meta": {}
+    },
+    "7": {
+      "id": "7",
+      "title": "validation.reports",
+      "raw_id": null,
+      "registers": {
+        "0": {
+          "report": {
+            "value": "{\"check\": \"state_image_size\", \"side_length\": 700, \"status\": \"ok\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "1": {
+          "report": {
+            "value": "{\"check\": \"text_editor_state_count\", \"count\": 12, \"status\": \"ok\"}",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        }
+      },
+      "meta": {}
+    },
+    "8": {
+      "id": "8",
+      "title": "state.programming",
+      "raw_id": null,
+      "registers": {
+        "0": {
+          "state_id": {
+            "value": "I0",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "input_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "processors": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "output_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "1": {
+          "state_id": {
+            "value": "I1",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "input_events": {
+            "value": "[{\"code\": \"\\nproject_dir = Path(manifest.get(\\\"output_directory\\\", manifest_path.parent if \\\"manifest_path\\\" in globals() else \\\".\\\")).resolve()\\nstore_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"store_path\\\") or project_dir / \\\"text-session-store.json\\\")\\nconfig_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"config_path\\\") or project_dir / \\\"text-session-config.json\\\")\\nplugins_dir = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"plugins_dir\\\") or project_dir / \\\"plugins\\\")\\nexports_dir = project_dir / \\\"exports\\\"\\nplugins_dir.mkdir(parents=True, exist_ok=True)\\nexports_dir.mkdir(parents=True, exist_ok=True)\\n\\ndef _read_json(path, default):\\n    path = Path(path)\\n    if path.exists():\\n        return json.loads(path.read_text(encoding=\\\"utf-8\\\"))\\n    return json.loads(json.dumps(default))\\n\\ndef _write_json(path, value):\\n    path = Path(path)\\n    path.parent.mkdir(parents=True, exist_ok=True)\\n    import os\\n    import uuid\\n    tmp = path.with_name(f\\\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\\\")\\n    try:\\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \\\"\\\\n\\\", encoding=\\\"utf-8\\\")\\n        tmp.replace(path)\\n    finally:\\n        if tmp.exists():\\n            tmp.unlink()\\n\\nstore = _read_json(store_path, {\\\"type\\\": \\\"pathfinder-text-session-store-v1\\\", \\\"documents\\\": {}, \\\"history\\\": []})\\nconfig = _read_json(config_path, {\\\"type\\\": \\\"pathfinder-text-session-config-v1\\\", \\\"style\\\": {}, \\\"behaviors\\\": {}, \\\"plugins\\\": {}})\\npayload = event.get(\\\"payload\\\", {}) if isinstance(event, dict) else {}\\nif not isinstance(payload, dict):\\n    payload = {\\\"value\\\": payload}\\n\\ndef _record(action, detail):\\n    store.setdefault(\\\"history\\\", []).append({\\n        \\\"at\\\": now_utc(),\\n        \\\"state\\\": state_id,\\n        \\\"action\\\": action,\\n        \\\"detail\\\": detail,\\n    })\\n\\ndef _documents():\\n    return store.setdefault(\\\"documents\\\", {})\\n\\ndef _select_ids():\\n    docs = _documents()\\n    ids = payload.get(\\\"ids\\\")\\n    if isinstance(ids, str):\\n        return [ids]\\n    if isinstance(ids, list):\\n        return [str(item) for item in ids if str(item) in docs]\\n    query = str(payload.get(\\\"query\\\", \\\"\\\")).lower()\\n    if query:\\n        return [\\n            doc_id for doc_id, doc in docs.items()\\n            if query in doc_id.lower()\\n            or query in str(doc.get(\\\"title\\\", \\\"\\\")).lower()\\n            or query in str(doc.get(\\\"content\\\", \\\"\\\")).lower()\\n        ]\\n    if payload.get(\\\"all\\\"):\\n        return list(docs.keys())\\n    doc_id = payload.get(\\\"id\\\")\\n    return [str(doc_id)] if doc_id is not None else []\\n\\ndef _save():\\n    _write_json(store_path, store)\\n    _write_json(config_path, config)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"store_path\\\"] = str(store_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"config_path\\\"] = str(config_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"plugins_dir\\\"] = str(plugins_dir)\\n\\ndocs = _documents()\\ndoc_id = str(payload.get(\\\"id\\\") or payload.get(\\\"name\\\") or f\\\"doc-{len(docs) + 1:04d}\\\")\\nif doc_id in docs and not payload.get(\\\"replace\\\"):\\n    raise ValueError(f\\\"document already exists: {doc_id}\\\")\\ndocs[doc_id] = {\\n    \\\"id\\\": doc_id,\\n    \\\"title\\\": payload.get(\\\"title\\\", doc_id),\\n    \\\"content\\\": payload.get(\\\"content\\\", \\\"\\\"),\\n    \\\"metadata\\\": payload.get(\\\"metadata\\\", {}),\\n    \\\"created_at\\\": now_utc(),\\n    \\\"updated_at\\\": now_utc(),\\n    \\\"revisions\\\": [],\\n}\\n_record(\\\"create\\\", {\\\"id\\\": doc_id})\\n_save()\\nemit({\\\"created\\\": doc_id, \\\"count\\\": len(docs)})\\n\", \"created_at\": \"2026-06-20T11:20:27+00:00\", \"enabled\": true, \"event_type\": \"python\", \"id\": \"input-cdcaa62f98\", \"kind\": \"input\", \"language\": \"python\", \"last_error\": null, \"last_run_at\": null, \"last_status\": \"never-run\", \"name\": \"text-session:singular-create\", \"source_path\": null, \"updated_at\": \"2026-06-20T11:20:27+00:00\"}]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "processors": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "output_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "2": {
+          "state_id": {
+            "value": "I2",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "input_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "processors": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "output_events": {
+            "value": "[{\"code\": \"\\nproject_dir = Path(manifest.get(\\\"output_directory\\\", manifest_path.parent if \\\"manifest_path\\\" in globals() else \\\".\\\")).resolve()\\nstore_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"store_path\\\") or project_dir / \\\"text-session-store.json\\\")\\nconfig_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"config_path\\\") or project_dir / \\\"text-session-config.json\\\")\\nplugins_dir = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"plugins_dir\\\") or project_dir / \\\"plugins\\\")\\nexports_dir = project_dir / \\\"exports\\\"\\nplugins_dir.mkdir(parents=True, exist_ok=True)\\nexports_dir.mkdir(parents=True, exist_ok=True)\\n\\ndef _read_json(path, default):\\n    path = Path(path)\\n    if path.exists():\\n        return json.loads(path.read_text(encoding=\\\"utf-8\\\"))\\n    return json.loads(json.dumps(default))\\n\\ndef _write_json(path, value):\\n    path = Path(path)\\n    path.parent.mkdir(parents=True, exist_ok=True)\\n    import os\\n    import uuid\\n    tmp = path.with_name(f\\\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\\\")\\n    try:\\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \\\"\\\\n\\\", encoding=\\\"utf-8\\\")\\n        tmp.replace(path)\\n    finally:\\n        if tmp.exists():\\n            tmp.unlink()\\n\\nstore = _read_json(store_path, {\\\"type\\\": \\\"pathfinder-text-session-store-v1\\\", \\\"documents\\\": {}, \\\"history\\\": []})\\nconfig = _read_json(config_path, {\\\"type\\\": \\\"pathfinder-text-session-config-v1\\\", \\\"style\\\": {}, \\\"behaviors\\\": {}, \\\"plugins\\\": {}})\\npayload = event.get(\\\"payload\\\", {}) if isinstance(event, dict) else {}\\nif not isinstance(payload, dict):\\n    payload = {\\\"value\\\": payload}\\n\\ndef _record(action, detail):\\n    store.setdefault(\\\"history\\\", []).append({\\n        \\\"at\\\": now_utc(),\\n        \\\"state\\\": state_id,\\n        \\\"action\\\": action,\\n        \\\"detail\\\": detail,\\n    })\\n\\ndef _documents():\\n    return store.setdefault(\\\"documents\\\", {})\\n\\ndef _select_ids():\\n    docs = _documents()\\n    ids = payload.get(\\\"ids\\\")\\n    if isinstance(ids, str):\\n        return [ids]\\n    if isinstance(ids, list):\\n        return [str(item) for item in ids if str(item) in docs]\\n    query = str(payload.get(\\\"query\\\", \\\"\\\")).lower()\\n    if query:\\n        return [\\n            doc_id for doc_id, doc in docs.items()\\n            if query in doc_id.lower()\\n            or query in str(doc.get(\\\"title\\\", \\\"\\\")).lower()\\n            or query in str(doc.get(\\\"content\\\", \\\"\\\")).lower()\\n        ]\\n    if payload.get(\\\"all\\\"):\\n        return list(docs.keys())\\n    doc_id = payload.get(\\\"id\\\")\\n    return [str(doc_id)] if doc_id is not None else []\\n\\ndef _save():\\n    _write_json(store_path, store)\\n    _write_json(config_path, config)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"store_path\\\"] = str(store_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"config_path\\\"] = str(config_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"plugins_dir\\\"] = str(plugins_dir)\\n\\ndocs = _documents()\\ndoc_id = payload.get(\\\"id\\\")\\nif doc_id is None:\\n    emit({\\\"documents\\\": list(docs.values()), \\\"count\\\": len(docs)})\\nelse:\\n    doc_id = str(doc_id)\\n    if doc_id not in docs:\\n        raise KeyError(f\\\"document not found: {doc_id}\\\")\\n    _record(\\\"read\\\", {\\\"id\\\": doc_id})\\n    _save()\\n    emit(docs[doc_id])\\n\", \"created_at\": \"2026-06-20T11:20:27+00:00\", \"enabled\": true, \"event_type\": \"python\", \"id\": \"output-bcb18b3bd2\", \"kind\": \"output\", \"language\": \"python\", \"last_error\": null, \"last_run_at\": null, \"last_status\": \"never-run\", \"name\": \"text-session:singular-read\", \"source_path\": null, \"updated_at\": \"2026-06-20T11:20:27+00:00\"}]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "3": {
+          "state_id": {
+            "value": "I3",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "input_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "processors": {
+            "value": "[{\"code\": \"\\nproject_dir = Path(manifest.get(\\\"output_directory\\\", manifest_path.parent if \\\"manifest_path\\\" in globals() else \\\".\\\")).resolve()\\nstore_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"store_path\\\") or project_dir / \\\"text-session-store.json\\\")\\nconfig_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"config_path\\\") or project_dir / \\\"text-session-config.json\\\")\\nplugins_dir = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"plugins_dir\\\") or project_dir / \\\"plugins\\\")\\nexports_dir = project_dir / \\\"exports\\\"\\nplugins_dir.mkdir(parents=True, exist_ok=True)\\nexports_dir.mkdir(parents=True, exist_ok=True)\\n\\ndef _read_json(path, default):\\n    path = Path(path)\\n    if path.exists():\\n        return json.loads(path.read_text(encoding=\\\"utf-8\\\"))\\n    return json.loads(json.dumps(default))\\n\\ndef _write_json(path, value):\\n    path = Path(path)\\n    path.parent.mkdir(parents=True, exist_ok=True)\\n    import os\\n    import uuid\\n    tmp = path.with_name(f\\\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\\\")\\n    try:\\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \\\"\\\\n\\\", encoding=\\\"utf-8\\\")\\n        tmp.replace(path)\\n    finally:\\n        if tmp.exists():\\n            tmp.unlink()\\n\\nstore = _read_json(store_path, {\\\"type\\\": \\\"pathfinder-text-session-store-v1\\\", \\\"documents\\\": {}, \\\"history\\\": []})\\nconfig = _read_json(config_path, {\\\"type\\\": \\\"pathfinder-text-session-config-v1\\\", \\\"style\\\": {}, \\\"behaviors\\\": {}, \\\"plugins\\\": {}})\\npayload = event.get(\\\"payload\\\", {}) if isinstance(event, dict) else {}\\nif not isinstance(payload, dict):\\n    payload = {\\\"value\\\": payload}\\n\\ndef _record(action, detail):\\n    store.setdefault(\\\"history\\\", []).append({\\n        \\\"at\\\": now_utc(),\\n        \\\"state\\\": state_id,\\n        \\\"action\\\": action,\\n        \\\"detail\\\": detail,\\n    })\\n\\ndef _documents():\\n    return store.setdefault(\\\"documents\\\", {})\\n\\ndef _select_ids():\\n    docs = _documents()\\n    ids = payload.get(\\\"ids\\\")\\n    if isinstance(ids, str):\\n        return [ids]\\n    if isinstance(ids, list):\\n        return [str(item) for item in ids if str(item) in docs]\\n    query = str(payload.get(\\\"query\\\", \\\"\\\")).lower()\\n    if query:\\n        return [\\n            doc_id for doc_id, doc in docs.items()\\n            if query in doc_id.lower()\\n            or query in str(doc.get(\\\"title\\\", \\\"\\\")).lower()\\n            or query in str(doc.get(\\\"content\\\", \\\"\\\")).lower()\\n        ]\\n    if payload.get(\\\"all\\\"):\\n        return list(docs.keys())\\n    doc_id = payload.get(\\\"id\\\")\\n    return [str(doc_id)] if doc_id is not None else []\\n\\ndef _save():\\n    _write_json(store_path, store)\\n    _write_json(config_path, config)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"store_path\\\"] = str(store_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"config_path\\\"] = str(config_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"plugins_dir\\\"] = str(plugins_dir)\\n\\ndocs = _documents()\\ndoc_id = str(payload.get(\\\"id\\\"))\\nif doc_id not in docs:\\n    raise KeyError(f\\\"document not found: {doc_id}\\\")\\ndoc = docs[doc_id]\\ndoc.setdefault(\\\"revisions\\\", []).append({\\\"at\\\": now_utc(), \\\"content\\\": doc.get(\\\"content\\\", \\\"\\\")})\\ncontent = str(doc.get(\\\"content\\\", \\\"\\\"))\\nif \\\"content\\\" in payload:\\n    content = str(payload[\\\"content\\\"])\\nif \\\"append\\\" in payload:\\n    content += str(payload[\\\"append\\\"])\\nif \\\"prepend\\\" in payload:\\n    content = str(payload[\\\"prepend\\\"]) + content\\nif \\\"find\\\" in payload:\\n    content = content.replace(str(payload.get(\\\"find\\\", \\\"\\\")), str(payload.get(\\\"replace\\\", \\\"\\\")))\\ndoc[\\\"content\\\"] = content\\ndoc[\\\"title\\\"] = payload.get(\\\"title\\\", doc.get(\\\"title\\\", doc_id))\\ndoc[\\\"metadata\\\"] = {**doc.get(\\\"metadata\\\", {}), **payload.get(\\\"metadata\\\", {})}\\ndoc[\\\"updated_at\\\"] = now_utc()\\n_record(\\\"update\\\", {\\\"id\\\": doc_id})\\n_save()\\nemit({\\\"updated\\\": doc_id, \\\"length\\\": len(content)})\\n\", \"created_at\": \"2026-06-20T11:20:27+00:00\", \"enabled\": true, \"event_type\": \"python\", \"id\": \"process-4257a0df69\", \"kind\": \"process\", \"language\": \"python\", \"last_error\": null, \"last_run_at\": null, \"last_status\": \"never-run\", \"name\": \"text-session:singular-update\", \"source_path\": null, \"updated_at\": \"2026-06-20T11:20:27+00:00\"}]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "output_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "4": {
+          "state_id": {
+            "value": "I4",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "input_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "processors": {
+            "value": "[{\"code\": \"\\nproject_dir = Path(manifest.get(\\\"output_directory\\\", manifest_path.parent if \\\"manifest_path\\\" in globals() else \\\".\\\")).resolve()\\nstore_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"store_path\\\") or project_dir / \\\"text-session-store.json\\\")\\nconfig_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"config_path\\\") or project_dir / \\\"text-session-config.json\\\")\\nplugins_dir = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"plugins_dir\\\") or project_dir / \\\"plugins\\\")\\nexports_dir = project_dir / \\\"exports\\\"\\nplugins_dir.mkdir(parents=True, exist_ok=True)\\nexports_dir.mkdir(parents=True, exist_ok=True)\\n\\ndef _read_json(path, default):\\n    path = Path(path)\\n    if path.exists():\\n        return json.loads(path.read_text(encoding=\\\"utf-8\\\"))\\n    return json.loads(json.dumps(default))\\n\\ndef _write_json(path, value):\\n    path = Path(path)\\n    path.parent.mkdir(parents=True, exist_ok=True)\\n    import os\\n    import uuid\\n    tmp = path.with_name(f\\\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\\\")\\n    try:\\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \\\"\\\\n\\\", encoding=\\\"utf-8\\\")\\n        tmp.replace(path)\\n    finally:\\n        if tmp.exists():\\n            tmp.unlink()\\n\\nstore = _read_json(store_path, {\\\"type\\\": \\\"pathfinder-text-session-store-v1\\\", \\\"documents\\\": {}, \\\"history\\\": []})\\nconfig = _read_json(config_path, {\\\"type\\\": \\\"pathfinder-text-session-config-v1\\\", \\\"style\\\": {}, \\\"behaviors\\\": {}, \\\"plugins\\\": {}})\\npayload = event.get(\\\"payload\\\", {}) if isinstance(event, dict) else {}\\nif not isinstance(payload, dict):\\n    payload = {\\\"value\\\": payload}\\n\\ndef _record(action, detail):\\n    store.setdefault(\\\"history\\\", []).append({\\n        \\\"at\\\": now_utc(),\\n        \\\"state\\\": state_id,\\n        \\\"action\\\": action,\\n        \\\"detail\\\": detail,\\n    })\\n\\ndef _documents():\\n    return store.setdefault(\\\"documents\\\", {})\\n\\ndef _select_ids():\\n    docs = _documents()\\n    ids = payload.get(\\\"ids\\\")\\n    if isinstance(ids, str):\\n        return [ids]\\n    if isinstance(ids, list):\\n        return [str(item) for item in ids if str(item) in docs]\\n    query = str(payload.get(\\\"query\\\", \\\"\\\")).lower()\\n    if query:\\n        return [\\n            doc_id for doc_id, doc in docs.items()\\n            if query in doc_id.lower()\\n            or query in str(doc.get(\\\"title\\\", \\\"\\\")).lower()\\n            or query in str(doc.get(\\\"content\\\", \\\"\\\")).lower()\\n        ]\\n    if payload.get(\\\"all\\\"):\\n        return list(docs.keys())\\n    doc_id = payload.get(\\\"id\\\")\\n    return [str(doc_id)] if doc_id is not None else []\\n\\ndef _save():\\n    _write_json(store_path, store)\\n    _write_json(config_path, config)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"store_path\\\"] = str(store_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"config_path\\\"] = str(config_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"plugins_dir\\\"] = str(plugins_dir)\\n\\ndocs = _documents()\\ndoc_id = str(payload.get(\\\"id\\\"))\\nif doc_id not in docs:\\n    raise KeyError(f\\\"document not found: {doc_id}\\\")\\ndeleted = docs.pop(doc_id)\\nif config.get(\\\"behaviors\\\", {}).get(\\\"archive_on_delete\\\", True) or payload.get(\\\"archive\\\"):\\n    archive = store.setdefault(\\\"deleted_archive\\\", [])\\n    archive.append({\\\"at\\\": now_utc(), \\\"document\\\": deleted})\\n_record(\\\"delete\\\", {\\\"id\\\": doc_id})\\n_save()\\nemit({\\\"deleted\\\": doc_id, \\\"remaining\\\": len(docs)})\\n\", \"created_at\": \"2026-06-20T11:20:27+00:00\", \"enabled\": true, \"event_type\": \"python\", \"id\": \"process-8765ea9d74\", \"kind\": \"process\", \"language\": \"python\", \"last_error\": null, \"last_run_at\": null, \"last_status\": \"never-run\", \"name\": \"text-session:singular-delete\", \"source_path\": null, \"updated_at\": \"2026-06-20T11:20:27+00:00\"}]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "output_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "5": {
+          "state_id": {
+            "value": "I5",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "input_events": {
+            "value": "[{\"code\": \"\\nproject_dir = Path(manifest.get(\\\"output_directory\\\", manifest_path.parent if \\\"manifest_path\\\" in globals() else \\\".\\\")).resolve()\\nstore_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"store_path\\\") or project_dir / \\\"text-session-store.json\\\")\\nconfig_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"config_path\\\") or project_dir / \\\"text-session-config.json\\\")\\nplugins_dir = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"plugins_dir\\\") or project_dir / \\\"plugins\\\")\\nexports_dir = project_dir / \\\"exports\\\"\\nplugins_dir.mkdir(parents=True, exist_ok=True)\\nexports_dir.mkdir(parents=True, exist_ok=True)\\n\\ndef _read_json(path, default):\\n    path = Path(path)\\n    if path.exists():\\n        return json.loads(path.read_text(encoding=\\\"utf-8\\\"))\\n    return json.loads(json.dumps(default))\\n\\ndef _write_json(path, value):\\n    path = Path(path)\\n    path.parent.mkdir(parents=True, exist_ok=True)\\n    import os\\n    import uuid\\n    tmp = path.with_name(f\\\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\\\")\\n    try:\\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \\\"\\\\n\\\", encoding=\\\"utf-8\\\")\\n        tmp.replace(path)\\n    finally:\\n        if tmp.exists():\\n            tmp.unlink()\\n\\nstore = _read_json(store_path, {\\\"type\\\": \\\"pathfinder-text-session-store-v1\\\", \\\"documents\\\": {}, \\\"history\\\": []})\\nconfig = _read_json(config_path, {\\\"type\\\": \\\"pathfinder-text-session-config-v1\\\", \\\"style\\\": {}, \\\"behaviors\\\": {}, \\\"plugins\\\": {}})\\npayload = event.get(\\\"payload\\\", {}) if isinstance(event, dict) else {}\\nif not isinstance(payload, dict):\\n    payload = {\\\"value\\\": payload}\\n\\ndef _record(action, detail):\\n    store.setdefault(\\\"history\\\", []).append({\\n        \\\"at\\\": now_utc(),\\n        \\\"state\\\": state_id,\\n        \\\"action\\\": action,\\n        \\\"detail\\\": detail,\\n    })\\n\\ndef _documents():\\n    return store.setdefault(\\\"documents\\\", {})\\n\\ndef _select_ids():\\n    docs = _documents()\\n    ids = payload.get(\\\"ids\\\")\\n    if isinstance(ids, str):\\n        return [ids]\\n    if isinstance(ids, list):\\n        return [str(item) for item in ids if str(item) in docs]\\n    query = str(payload.get(\\\"query\\\", \\\"\\\")).lower()\\n    if query:\\n        return [\\n            doc_id for doc_id, doc in docs.items()\\n            if query in doc_id.lower()\\n            or query in str(doc.get(\\\"title\\\", \\\"\\\")).lower()\\n            or query in str(doc.get(\\\"content\\\", \\\"\\\")).lower()\\n        ]\\n    if payload.get(\\\"all\\\"):\\n        return list(docs.keys())\\n    doc_id = payload.get(\\\"id\\\")\\n    return [str(doc_id)] if doc_id is not None else []\\n\\ndef _save():\\n    _write_json(store_path, store)\\n    _write_json(config_path, config)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"store_path\\\"] = str(store_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"config_path\\\"] = str(config_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"plugins_dir\\\"] = str(plugins_dir)\\n\\ndocs = _documents()\\nincoming = payload.get(\\\"documents\\\") or []\\nif not incoming:\\n    incoming = [\\n        {\\\"id\\\": \\\"batch-0001\\\", \\\"title\\\": \\\"Batch document 1\\\", \\\"content\\\": \\\"Generated by batch create.\\\"},\\n        {\\\"id\\\": \\\"batch-0002\\\", \\\"title\\\": \\\"Batch document 2\\\", \\\"content\\\": \\\"Generated by batch create.\\\"},\\n    ]\\ncreated = []\\nfor item in incoming:\\n    doc_id = str(item.get(\\\"id\\\") or item.get(\\\"name\\\") or f\\\"doc-{len(docs) + 1:04d}\\\")\\n    docs[doc_id] = {\\n        \\\"id\\\": doc_id,\\n        \\\"title\\\": item.get(\\\"title\\\", doc_id),\\n        \\\"content\\\": item.get(\\\"content\\\", \\\"\\\"),\\n        \\\"metadata\\\": item.get(\\\"metadata\\\", {}),\\n        \\\"created_at\\\": now_utc(),\\n        \\\"updated_at\\\": now_utc(),\\n        \\\"revisions\\\": [],\\n    }\\n    created.append(doc_id)\\n_record(\\\"batch-create\\\", {\\\"ids\\\": created})\\n_save()\\nemit({\\\"created\\\": created, \\\"count\\\": len(created)})\\n\", \"created_at\": \"2026-06-20T11:20:27+00:00\", \"enabled\": true, \"event_type\": \"python\", \"id\": \"input-7f6f72b7aa\", \"kind\": \"input\", \"language\": \"python\", \"last_error\": null, \"last_run_at\": null, \"last_status\": \"never-run\", \"name\": \"text-session:batch-create\", \"source_path\": null, \"updated_at\": \"2026-06-20T11:20:27+00:00\"}]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "processors": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "output_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "6": {
+          "state_id": {
+            "value": "I6",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "input_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "processors": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "output_events": {
+            "value": "[{\"code\": \"\\nproject_dir = Path(manifest.get(\\\"output_directory\\\", manifest_path.parent if \\\"manifest_path\\\" in globals() else \\\".\\\")).resolve()\\nstore_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"store_path\\\") or project_dir / \\\"text-session-store.json\\\")\\nconfig_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"config_path\\\") or project_dir / \\\"text-session-config.json\\\")\\nplugins_dir = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"plugins_dir\\\") or project_dir / \\\"plugins\\\")\\nexports_dir = project_dir / \\\"exports\\\"\\nplugins_dir.mkdir(parents=True, exist_ok=True)\\nexports_dir.mkdir(parents=True, exist_ok=True)\\n\\ndef _read_json(path, default):\\n    path = Path(path)\\n    if path.exists():\\n        return json.loads(path.read_text(encoding=\\\"utf-8\\\"))\\n    return json.loads(json.dumps(default))\\n\\ndef _write_json(path, value):\\n    path = Path(path)\\n    path.parent.mkdir(parents=True, exist_ok=True)\\n    import os\\n    import uuid\\n    tmp = path.with_name(f\\\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\\\")\\n    try:\\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \\\"\\\\n\\\", encoding=\\\"utf-8\\\")\\n        tmp.replace(path)\\n    finally:\\n        if tmp.exists():\\n            tmp.unlink()\\n\\nstore = _read_json(store_path, {\\\"type\\\": \\\"pathfinder-text-session-store-v1\\\", \\\"documents\\\": {}, \\\"history\\\": []})\\nconfig = _read_json(config_path, {\\\"type\\\": \\\"pathfinder-text-session-config-v1\\\", \\\"style\\\": {}, \\\"behaviors\\\": {}, \\\"plugins\\\": {}})\\npayload = event.get(\\\"payload\\\", {}) if isinstance(event, dict) else {}\\nif not isinstance(payload, dict):\\n    payload = {\\\"value\\\": payload}\\n\\ndef _record(action, detail):\\n    store.setdefault(\\\"history\\\", []).append({\\n        \\\"at\\\": now_utc(),\\n        \\\"state\\\": state_id,\\n        \\\"action\\\": action,\\n        \\\"detail\\\": detail,\\n    })\\n\\ndef _documents():\\n    return store.setdefault(\\\"documents\\\", {})\\n\\ndef _select_ids():\\n    docs = _documents()\\n    ids = payload.get(\\\"ids\\\")\\n    if isinstance(ids, str):\\n        return [ids]\\n    if isinstance(ids, list):\\n        return [str(item) for item in ids if str(item) in docs]\\n    query = str(payload.get(\\\"query\\\", \\\"\\\")).lower()\\n    if query:\\n        return [\\n            doc_id for doc_id, doc in docs.items()\\n            if query in doc_id.lower()\\n            or query in str(doc.get(\\\"title\\\", \\\"\\\")).lower()\\n            or query in str(doc.get(\\\"content\\\", \\\"\\\")).lower()\\n        ]\\n    if payload.get(\\\"all\\\"):\\n        return list(docs.keys())\\n    doc_id = payload.get(\\\"id\\\")\\n    return [str(doc_id)] if doc_id is not None else []\\n\\ndef _save():\\n    _write_json(store_path, store)\\n    _write_json(config_path, config)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"store_path\\\"] = str(store_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"config_path\\\"] = str(config_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"plugins_dir\\\"] = str(plugins_dir)\\n\\ndocs = _documents()\\nids = _select_ids() or list(docs.keys())\\nselected = [docs[doc_id] for doc_id in ids if doc_id in docs]\\nexport_path = None\\nif payload.get(\\\"export\\\", True):\\n    export_path = exports_dir / str(payload.get(\\\"export_name\\\", \\\"batch-read.json\\\"))\\n    export_path.write_text(json.dumps(selected, indent=2, ensure_ascii=False), encoding=\\\"utf-8\\\")\\n_record(\\\"batch-read\\\", {\\\"ids\\\": ids, \\\"export_path\\\": str(export_path) if export_path else None})\\n_save()\\nemit({\\\"documents\\\": selected, \\\"count\\\": len(selected), \\\"export_path\\\": str(export_path) if export_path else None})\\n\", \"created_at\": \"2026-06-20T11:20:27+00:00\", \"enabled\": true, \"event_type\": \"python\", \"id\": \"output-88747ebdd1\", \"kind\": \"output\", \"language\": \"python\", \"last_error\": null, \"last_run_at\": null, \"last_status\": \"never-run\", \"name\": \"text-session:batch-read-export\", \"source_path\": null, \"updated_at\": \"2026-06-20T11:20:27+00:00\"}]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "7": {
+          "state_id": {
+            "value": "I7",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "input_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "processors": {
+            "value": "[{\"code\": \"\\nproject_dir = Path(manifest.get(\\\"output_directory\\\", manifest_path.parent if \\\"manifest_path\\\" in globals() else \\\".\\\")).resolve()\\nstore_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"store_path\\\") or project_dir / \\\"text-session-store.json\\\")\\nconfig_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"config_path\\\") or project_dir / \\\"text-session-config.json\\\")\\nplugins_dir = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"plugins_dir\\\") or project_dir / \\\"plugins\\\")\\nexports_dir = project_dir / \\\"exports\\\"\\nplugins_dir.mkdir(parents=True, exist_ok=True)\\nexports_dir.mkdir(parents=True, exist_ok=True)\\n\\ndef _read_json(path, default):\\n    path = Path(path)\\n    if path.exists():\\n        return json.loads(path.read_text(encoding=\\\"utf-8\\\"))\\n    return json.loads(json.dumps(default))\\n\\ndef _write_json(path, value):\\n    path = Path(path)\\n    path.parent.mkdir(parents=True, exist_ok=True)\\n    import os\\n    import uuid\\n    tmp = path.with_name(f\\\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\\\")\\n    try:\\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \\\"\\\\n\\\", encoding=\\\"utf-8\\\")\\n        tmp.replace(path)\\n    finally:\\n        if tmp.exists():\\n            tmp.unlink()\\n\\nstore = _read_json(store_path, {\\\"type\\\": \\\"pathfinder-text-session-store-v1\\\", \\\"documents\\\": {}, \\\"history\\\": []})\\nconfig = _read_json(config_path, {\\\"type\\\": \\\"pathfinder-text-session-config-v1\\\", \\\"style\\\": {}, \\\"behaviors\\\": {}, \\\"plugins\\\": {}})\\npayload = event.get(\\\"payload\\\", {}) if isinstance(event, dict) else {}\\nif not isinstance(payload, dict):\\n    payload = {\\\"value\\\": payload}\\n\\ndef _record(action, detail):\\n    store.setdefault(\\\"history\\\", []).append({\\n        \\\"at\\\": now_utc(),\\n        \\\"state\\\": state_id,\\n        \\\"action\\\": action,\\n        \\\"detail\\\": detail,\\n    })\\n\\ndef _documents():\\n    return store.setdefault(\\\"documents\\\", {})\\n\\ndef _select_ids():\\n    docs = _documents()\\n    ids = payload.get(\\\"ids\\\")\\n    if isinstance(ids, str):\\n        return [ids]\\n    if isinstance(ids, list):\\n        return [str(item) for item in ids if str(item) in docs]\\n    query = str(payload.get(\\\"query\\\", \\\"\\\")).lower()\\n    if query:\\n        return [\\n            doc_id for doc_id, doc in docs.items()\\n            if query in doc_id.lower()\\n            or query in str(doc.get(\\\"title\\\", \\\"\\\")).lower()\\n            or query in str(doc.get(\\\"content\\\", \\\"\\\")).lower()\\n        ]\\n    if payload.get(\\\"all\\\"):\\n        return list(docs.keys())\\n    doc_id = payload.get(\\\"id\\\")\\n    return [str(doc_id)] if doc_id is not None else []\\n\\ndef _save():\\n    _write_json(store_path, store)\\n    _write_json(config_path, config)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"store_path\\\"] = str(store_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"config_path\\\"] = str(config_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"plugins_dir\\\"] = str(plugins_dir)\\n\\ndocs = _documents()\\nids = _select_ids()\\nif not ids and payload.get(\\\"all\\\", True):\\n    ids = list(docs.keys())\\nupdated = []\\nfor doc_id in ids:\\n    if doc_id not in docs:\\n        continue\\n    doc = docs[doc_id]\\n    doc.setdefault(\\\"revisions\\\", []).append({\\\"at\\\": now_utc(), \\\"content\\\": doc.get(\\\"content\\\", \\\"\\\")})\\n    content = str(doc.get(\\\"content\\\", \\\"\\\"))\\n    if \\\"find\\\" in payload:\\n        content = content.replace(str(payload.get(\\\"find\\\", \\\"\\\")), str(payload.get(\\\"replace\\\", \\\"\\\")))\\n    if \\\"prefix\\\" in payload:\\n        content = str(payload[\\\"prefix\\\"]) + content\\n    if \\\"suffix\\\" in payload:\\n        content = content + str(payload[\\\"suffix\\\"])\\n    transform = payload.get(\\\"transform\\\")\\n    if transform == \\\"upper\\\":\\n        content = content.upper()\\n    elif transform == \\\"lower\\\":\\n        content = content.lower()\\n    elif transform == \\\"title\\\":\\n        content = content.title()\\n    doc[\\\"content\\\"] = content\\n    doc[\\\"updated_at\\\"] = now_utc()\\n    updated.append(doc_id)\\n_record(\\\"batch-update\\\", {\\\"ids\\\": updated})\\n_save()\\nemit({\\\"updated\\\": updated, \\\"count\\\": len(updated)})\\n\", \"created_at\": \"2026-06-20T11:20:27+00:00\", \"enabled\": true, \"event_type\": \"python\", \"id\": \"process-ceba54e413\", \"kind\": \"process\", \"language\": \"python\", \"last_error\": null, \"last_run_at\": null, \"last_status\": \"never-run\", \"name\": \"text-session:batch-update\", \"source_path\": null, \"updated_at\": \"2026-06-20T11:20:27+00:00\"}]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "output_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "8": {
+          "state_id": {
+            "value": "I8",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "input_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "processors": {
+            "value": "[{\"code\": \"\\nproject_dir = Path(manifest.get(\\\"output_directory\\\", manifest_path.parent if \\\"manifest_path\\\" in globals() else \\\".\\\")).resolve()\\nstore_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"store_path\\\") or project_dir / \\\"text-session-store.json\\\")\\nconfig_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"config_path\\\") or project_dir / \\\"text-session-config.json\\\")\\nplugins_dir = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"plugins_dir\\\") or project_dir / \\\"plugins\\\")\\nexports_dir = project_dir / \\\"exports\\\"\\nplugins_dir.mkdir(parents=True, exist_ok=True)\\nexports_dir.mkdir(parents=True, exist_ok=True)\\n\\ndef _read_json(path, default):\\n    path = Path(path)\\n    if path.exists():\\n        return json.loads(path.read_text(encoding=\\\"utf-8\\\"))\\n    return json.loads(json.dumps(default))\\n\\ndef _write_json(path, value):\\n    path = Path(path)\\n    path.parent.mkdir(parents=True, exist_ok=True)\\n    import os\\n    import uuid\\n    tmp = path.with_name(f\\\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\\\")\\n    try:\\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \\\"\\\\n\\\", encoding=\\\"utf-8\\\")\\n        tmp.replace(path)\\n    finally:\\n        if tmp.exists():\\n            tmp.unlink()\\n\\nstore = _read_json(store_path, {\\\"type\\\": \\\"pathfinder-text-session-store-v1\\\", \\\"documents\\\": {}, \\\"history\\\": []})\\nconfig = _read_json(config_path, {\\\"type\\\": \\\"pathfinder-text-session-config-v1\\\", \\\"style\\\": {}, \\\"behaviors\\\": {}, \\\"plugins\\\": {}})\\npayload = event.get(\\\"payload\\\", {}) if isinstance(event, dict) else {}\\nif not isinstance(payload, dict):\\n    payload = {\\\"value\\\": payload}\\n\\ndef _record(action, detail):\\n    store.setdefault(\\\"history\\\", []).append({\\n        \\\"at\\\": now_utc(),\\n        \\\"state\\\": state_id,\\n        \\\"action\\\": action,\\n        \\\"detail\\\": detail,\\n    })\\n\\ndef _documents():\\n    return store.setdefault(\\\"documents\\\", {})\\n\\ndef _select_ids():\\n    docs = _documents()\\n    ids = payload.get(\\\"ids\\\")\\n    if isinstance(ids, str):\\n        return [ids]\\n    if isinstance(ids, list):\\n        return [str(item) for item in ids if str(item) in docs]\\n    query = str(payload.get(\\\"query\\\", \\\"\\\")).lower()\\n    if query:\\n        return [\\n            doc_id for doc_id, doc in docs.items()\\n            if query in doc_id.lower()\\n            or query in str(doc.get(\\\"title\\\", \\\"\\\")).lower()\\n            or query in str(doc.get(\\\"content\\\", \\\"\\\")).lower()\\n        ]\\n    if payload.get(\\\"all\\\"):\\n        return list(docs.keys())\\n    doc_id = payload.get(\\\"id\\\")\\n    return [str(doc_id)] if doc_id is not None else []\\n\\ndef _save():\\n    _write_json(store_path, store)\\n    _write_json(config_path, config)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"store_path\\\"] = str(store_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"config_path\\\"] = str(config_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"plugins_dir\\\"] = str(plugins_dir)\\n\\ndocs = _documents()\\nids = _select_ids()\\ndeleted = []\\narchive = store.setdefault(\\\"deleted_archive\\\", [])\\nfor doc_id in ids:\\n    if doc_id in docs:\\n        doc = docs.pop(doc_id)\\n        deleted.append(doc_id)\\n        if config.get(\\\"behaviors\\\", {}).get(\\\"archive_on_delete\\\", True) or payload.get(\\\"archive\\\", True):\\n            archive.append({\\\"at\\\": now_utc(), \\\"document\\\": doc})\\n_record(\\\"batch-delete\\\", {\\\"ids\\\": deleted})\\n_save()\\nemit({\\\"deleted\\\": deleted, \\\"count\\\": len(deleted), \\\"remaining\\\": len(docs)})\\n\", \"created_at\": \"2026-06-20T11:20:27+00:00\", \"enabled\": true, \"event_type\": \"python\", \"id\": \"process-ad8b08ad1e\", \"kind\": \"process\", \"language\": \"python\", \"last_error\": null, \"last_run_at\": null, \"last_status\": \"never-run\", \"name\": \"text-session:batch-delete\", \"source_path\": null, \"updated_at\": \"2026-06-20T11:20:27+00:00\"}]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "output_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "9": {
+          "state_id": {
+            "value": "I9",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "input_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "processors": {
+            "value": "[{\"code\": \"\\nproject_dir = Path(manifest.get(\\\"output_directory\\\", manifest_path.parent if \\\"manifest_path\\\" in globals() else \\\".\\\")).resolve()\\nstore_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"store_path\\\") or project_dir / \\\"text-session-store.json\\\")\\nconfig_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"config_path\\\") or project_dir / \\\"text-session-config.json\\\")\\nplugins_dir = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"plugins_dir\\\") or project_dir / \\\"plugins\\\")\\nexports_dir = project_dir / \\\"exports\\\"\\nplugins_dir.mkdir(parents=True, exist_ok=True)\\nexports_dir.mkdir(parents=True, exist_ok=True)\\n\\ndef _read_json(path, default):\\n    path = Path(path)\\n    if path.exists():\\n        return json.loads(path.read_text(encoding=\\\"utf-8\\\"))\\n    return json.loads(json.dumps(default))\\n\\ndef _write_json(path, value):\\n    path = Path(path)\\n    path.parent.mkdir(parents=True, exist_ok=True)\\n    import os\\n    import uuid\\n    tmp = path.with_name(f\\\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\\\")\\n    try:\\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \\\"\\\\n\\\", encoding=\\\"utf-8\\\")\\n        tmp.replace(path)\\n    finally:\\n        if tmp.exists():\\n            tmp.unlink()\\n\\nstore = _read_json(store_path, {\\\"type\\\": \\\"pathfinder-text-session-store-v1\\\", \\\"documents\\\": {}, \\\"history\\\": []})\\nconfig = _read_json(config_path, {\\\"type\\\": \\\"pathfinder-text-session-config-v1\\\", \\\"style\\\": {}, \\\"behaviors\\\": {}, \\\"plugins\\\": {}})\\npayload = event.get(\\\"payload\\\", {}) if isinstance(event, dict) else {}\\nif not isinstance(payload, dict):\\n    payload = {\\\"value\\\": payload}\\n\\ndef _record(action, detail):\\n    store.setdefault(\\\"history\\\", []).append({\\n        \\\"at\\\": now_utc(),\\n        \\\"state\\\": state_id,\\n        \\\"action\\\": action,\\n        \\\"detail\\\": detail,\\n    })\\n\\ndef _documents():\\n    return store.setdefault(\\\"documents\\\", {})\\n\\ndef _select_ids():\\n    docs = _documents()\\n    ids = payload.get(\\\"ids\\\")\\n    if isinstance(ids, str):\\n        return [ids]\\n    if isinstance(ids, list):\\n        return [str(item) for item in ids if str(item) in docs]\\n    query = str(payload.get(\\\"query\\\", \\\"\\\")).lower()\\n    if query:\\n        return [\\n            doc_id for doc_id, doc in docs.items()\\n            if query in doc_id.lower()\\n            or query in str(doc.get(\\\"title\\\", \\\"\\\")).lower()\\n            or query in str(doc.get(\\\"content\\\", \\\"\\\")).lower()\\n        ]\\n    if payload.get(\\\"all\\\"):\\n        return list(docs.keys())\\n    doc_id = payload.get(\\\"id\\\")\\n    return [str(doc_id)] if doc_id is not None else []\\n\\ndef _save():\\n    _write_json(store_path, store)\\n    _write_json(config_path, config)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"store_path\\\"] = str(store_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"config_path\\\"] = str(config_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"plugins_dir\\\"] = str(plugins_dir)\\n\\nresults = []\\nfor plugin_path in sorted(plugins_dir.glob(\\\"*.py\\\")):\\n    ns = {\\n        \\\"manifest\\\": manifest,\\n        \\\"store\\\": store,\\n        \\\"config\\\": config,\\n        \\\"payload\\\": payload,\\n        \\\"event\\\": event,\\n        \\\"cursor\\\": cursor,\\n        \\\"project_dir\\\": project_dir,\\n        \\\"Path\\\": Path,\\n        \\\"json\\\": json,\\n        \\\"now_utc\\\": now_utc,\\n        \\\"emit\\\": emit,\\n    }\\n    exec(compile(plugin_path.read_text(encoding=\\\"utf-8\\\"), str(plugin_path), \\\"exec\\\"), ns, ns)\\n    result = None\\n    if callable(ns.get(\\\"configure\\\")):\\n        result = ns[\\\"configure\\\"](config)\\n    if callable(ns.get(\\\"style\\\")):\\n        style_result = ns[\\\"style\\\"](config.get(\\\"style\\\", {}))\\n        if isinstance(style_result, dict):\\n            config.setdefault(\\\"style\\\", {}).update(style_result)\\n            result = style_result\\n    if callable(ns.get(\\\"handle\\\")):\\n        result = ns[\\\"handle\\\"]({\\\"store\\\": store, \\\"config\\\": config, \\\"payload\\\": payload, \\\"manifest\\\": manifest})\\n    results.append({\\\"plugin\\\": plugin_path.name, \\\"result\\\": result})\\n_record(\\\"plugins\\\", {\\\"plugins\\\": [item[\\\"plugin\\\"] for item in results]})\\n_save()\\nemit({\\\"plugins\\\": results, \\\"count\\\": len(results)})\\n\", \"created_at\": \"2026-06-20T11:20:27+00:00\", \"enabled\": true, \"event_type\": \"python\", \"id\": \"process-76c4b077c8\", \"kind\": \"process\", \"language\": \"python\", \"last_error\": null, \"last_run_at\": null, \"last_status\": \"never-run\", \"name\": \"text-session:python-plugin-dispatch\", \"source_path\": null, \"updated_at\": \"2026-06-20T11:20:27+00:00\"}]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "output_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "10": {
+          "state_id": {
+            "value": "I10",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "input_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "processors": {
+            "value": "[{\"code\": \"\\nproject_dir = Path(manifest.get(\\\"output_directory\\\", manifest_path.parent if \\\"manifest_path\\\" in globals() else \\\".\\\")).resolve()\\nstore_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"store_path\\\") or project_dir / \\\"text-session-store.json\\\")\\nconfig_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"config_path\\\") or project_dir / \\\"text-session-config.json\\\")\\nplugins_dir = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"plugins_dir\\\") or project_dir / \\\"plugins\\\")\\nexports_dir = project_dir / \\\"exports\\\"\\nplugins_dir.mkdir(parents=True, exist_ok=True)\\nexports_dir.mkdir(parents=True, exist_ok=True)\\n\\ndef _read_json(path, default):\\n    path = Path(path)\\n    if path.exists():\\n        return json.loads(path.read_text(encoding=\\\"utf-8\\\"))\\n    return json.loads(json.dumps(default))\\n\\ndef _write_json(path, value):\\n    path = Path(path)\\n    path.parent.mkdir(parents=True, exist_ok=True)\\n    import os\\n    import uuid\\n    tmp = path.with_name(f\\\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\\\")\\n    try:\\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \\\"\\\\n\\\", encoding=\\\"utf-8\\\")\\n        tmp.replace(path)\\n    finally:\\n        if tmp.exists():\\n            tmp.unlink()\\n\\nstore = _read_json(store_path, {\\\"type\\\": \\\"pathfinder-text-session-store-v1\\\", \\\"documents\\\": {}, \\\"history\\\": []})\\nconfig = _read_json(config_path, {\\\"type\\\": \\\"pathfinder-text-session-config-v1\\\", \\\"style\\\": {}, \\\"behaviors\\\": {}, \\\"plugins\\\": {}})\\npayload = event.get(\\\"payload\\\", {}) if isinstance(event, dict) else {}\\nif not isinstance(payload, dict):\\n    payload = {\\\"value\\\": payload}\\n\\ndef _record(action, detail):\\n    store.setdefault(\\\"history\\\", []).append({\\n        \\\"at\\\": now_utc(),\\n        \\\"state\\\": state_id,\\n        \\\"action\\\": action,\\n        \\\"detail\\\": detail,\\n    })\\n\\ndef _documents():\\n    return store.setdefault(\\\"documents\\\", {})\\n\\ndef _select_ids():\\n    docs = _documents()\\n    ids = payload.get(\\\"ids\\\")\\n    if isinstance(ids, str):\\n        return [ids]\\n    if isinstance(ids, list):\\n        return [str(item) for item in ids if str(item) in docs]\\n    query = str(payload.get(\\\"query\\\", \\\"\\\")).lower()\\n    if query:\\n        return [\\n            doc_id for doc_id, doc in docs.items()\\n            if query in doc_id.lower()\\n            or query in str(doc.get(\\\"title\\\", \\\"\\\")).lower()\\n            or query in str(doc.get(\\\"content\\\", \\\"\\\")).lower()\\n        ]\\n    if payload.get(\\\"all\\\"):\\n        return list(docs.keys())\\n    doc_id = payload.get(\\\"id\\\")\\n    return [str(doc_id)] if doc_id is not None else []\\n\\ndef _save():\\n    _write_json(store_path, store)\\n    _write_json(config_path, config)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"store_path\\\"] = str(store_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"config_path\\\"] = str(config_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"plugins_dir\\\"] = str(plugins_dir)\\n\\nconfig.setdefault(\\\"style\\\", {}).update(payload.get(\\\"style\\\", {}))\\nconfig.setdefault(\\\"behaviors\\\", {}).update(payload.get(\\\"behaviors\\\", {}))\\nif payload.get(\\\"reset\\\"):\\n    config[\\\"style\\\"] = {\\n        \\\"font_family\\\": \\\"Consolas\\\",\\n        \\\"font_size\\\": 13,\\n        \\\"foreground\\\": \\\"#101828\\\",\\n        \\\"background\\\": \\\"#FFFFFF\\\",\\n        \\\"accent\\\": \\\"#35B7A6\\\",\\n        \\\"line_numbers\\\": True,\\n        \\\"wrap\\\": \\\"word\\\",\\n    }\\n_record(\\\"configure\\\", {\\\"style\\\": config.get(\\\"style\\\", {}), \\\"behaviors\\\": config.get(\\\"behaviors\\\", {})})\\n_save()\\nemit(config)\\n\", \"created_at\": \"2026-06-20T11:20:27+00:00\", \"enabled\": true, \"event_type\": \"python\", \"id\": \"process-43ab9e14b4\", \"kind\": \"process\", \"language\": \"python\", \"last_error\": null, \"last_run_at\": null, \"last_status\": \"never-run\", \"name\": \"text-session:configuration-style\", \"source_path\": null, \"updated_at\": \"2026-06-20T11:20:27+00:00\"}]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "output_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        },
+        "11": {
+          "state_id": {
+            "value": "I11",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "input_events": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "processors": {
+            "value": "[]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          },
+          "output_events": {
+            "value": "[{\"code\": \"\\nproject_dir = Path(manifest.get(\\\"output_directory\\\", manifest_path.parent if \\\"manifest_path\\\" in globals() else \\\".\\\")).resolve()\\nstore_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"store_path\\\") or project_dir / \\\"text-session-store.json\\\")\\nconfig_path = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"config_path\\\") or project_dir / \\\"text-session-config.json\\\")\\nplugins_dir = Path(manifest.setdefault(\\\"text_editor_session\\\", {}).get(\\\"plugins_dir\\\") or project_dir / \\\"plugins\\\")\\nexports_dir = project_dir / \\\"exports\\\"\\nplugins_dir.mkdir(parents=True, exist_ok=True)\\nexports_dir.mkdir(parents=True, exist_ok=True)\\n\\ndef _read_json(path, default):\\n    path = Path(path)\\n    if path.exists():\\n        return json.loads(path.read_text(encoding=\\\"utf-8\\\"))\\n    return json.loads(json.dumps(default))\\n\\ndef _write_json(path, value):\\n    path = Path(path)\\n    path.parent.mkdir(parents=True, exist_ok=True)\\n    import os\\n    import uuid\\n    tmp = path.with_name(f\\\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\\\")\\n    try:\\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \\\"\\\\n\\\", encoding=\\\"utf-8\\\")\\n        tmp.replace(path)\\n    finally:\\n        if tmp.exists():\\n            tmp.unlink()\\n\\nstore = _read_json(store_path, {\\\"type\\\": \\\"pathfinder-text-session-store-v1\\\", \\\"documents\\\": {}, \\\"history\\\": []})\\nconfig = _read_json(config_path, {\\\"type\\\": \\\"pathfinder-text-session-config-v1\\\", \\\"style\\\": {}, \\\"behaviors\\\": {}, \\\"plugins\\\": {}})\\npayload = event.get(\\\"payload\\\", {}) if isinstance(event, dict) else {}\\nif not isinstance(payload, dict):\\n    payload = {\\\"value\\\": payload}\\n\\ndef _record(action, detail):\\n    store.setdefault(\\\"history\\\", []).append({\\n        \\\"at\\\": now_utc(),\\n        \\\"state\\\": state_id,\\n        \\\"action\\\": action,\\n        \\\"detail\\\": detail,\\n    })\\n\\ndef _documents():\\n    return store.setdefault(\\\"documents\\\", {})\\n\\ndef _select_ids():\\n    docs = _documents()\\n    ids = payload.get(\\\"ids\\\")\\n    if isinstance(ids, str):\\n        return [ids]\\n    if isinstance(ids, list):\\n        return [str(item) for item in ids if str(item) in docs]\\n    query = str(payload.get(\\\"query\\\", \\\"\\\")).lower()\\n    if query:\\n        return [\\n            doc_id for doc_id, doc in docs.items()\\n            if query in doc_id.lower()\\n            or query in str(doc.get(\\\"title\\\", \\\"\\\")).lower()\\n            or query in str(doc.get(\\\"content\\\", \\\"\\\")).lower()\\n        ]\\n    if payload.get(\\\"all\\\"):\\n        return list(docs.keys())\\n    doc_id = payload.get(\\\"id\\\")\\n    return [str(doc_id)] if doc_id is not None else []\\n\\ndef _save():\\n    _write_json(store_path, store)\\n    _write_json(config_path, config)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"store_path\\\"] = str(store_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"config_path\\\"] = str(config_path)\\n    manifest.setdefault(\\\"text_editor_session\\\", {})[\\\"plugins_dir\\\"] = str(plugins_dir)\\n\\nsummary = {\\n    \\\"manifest\\\": str(manifest_path),\\n    \\\"session\\\": str(session_path) if session_path else None,\\n    \\\"store\\\": str(store_path),\\n    \\\"config\\\": str(config_path),\\n    \\\"plugins\\\": str(plugins_dir),\\n    \\\"document_count\\\": len(_documents()),\\n    \\\"history_count\\\": len(store.get(\\\"history\\\", [])),\\n}\\nsummary_path = project_dir / \\\"text-session-summary.json\\\"\\nsummary_path.write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding=\\\"utf-8\\\")\\n_record(\\\"persist\\\", {\\\"summary_path\\\": str(summary_path)})\\n_save()\\nemit(summary)\\n\", \"created_at\": \"2026-06-20T11:20:27+00:00\", \"enabled\": true, \"event_type\": \"python\", \"id\": \"output-3957743db8\", \"kind\": \"output\", \"language\": \"python\", \"last_error\": null, \"last_run_at\": null, \"last_status\": \"never-run\", \"name\": \"text-session:persistence-summary\", \"source_path\": null, \"updated_at\": \"2026-06-20T11:20:27+00:00\"}]",
+            "raw_bank": null,
+            "raw_register": null,
+            "raw_address": null,
+            "meta": {}
+          }
+        }
+      },
+      "meta": {}
+    }
+  }
+}

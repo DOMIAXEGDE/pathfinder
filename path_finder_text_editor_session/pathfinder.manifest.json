@@ -1,0 +1,795 @@
+{
+  "type": "pathfinder-manifest-v1",
+  "name": "Pathfinder Text Editor Session",
+  "created_at": "2026-06-20T11:16:56+00:00",
+  "architecture": "Pathfinder text editor session: singular CRUD, batch CRUD, Python instruction scripts, and Python plugin extensibility.",
+  "seed_image": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0000.png",
+  "output_directory": "D:\\execute\\omicron\\pathfinder_text_editor_session",
+  "image_side_length": 700,
+  "grid_pattern_signature": {
+    "source": "state-gen.py",
+    "side_length": 700,
+    "state_count": 12,
+    "state_titles": [
+      "Text Session",
+      "Create",
+      "Read",
+      "Update",
+      "Delete",
+      "Batch Create",
+      "Batch Read",
+      "Batch Update",
+      "Batch Delete",
+      "Python Scripts",
+      "Configuration",
+      "Persistence"
+    ],
+    "signature_sha256": "7df36716ae6bc10b0494a8633ea9e4f81ec6342cc6a7a9bc224e25dcde2ccf7a"
+  },
+  "image_states": [
+    {
+      "id": "I0",
+      "index": 0,
+      "label": "Text Session",
+      "editor_operation": "home",
+      "image_path": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0000.png",
+      "rgb_path": "",
+      "hex_path": "",
+      "side_length": 700,
+      "pixel_count": 490000,
+      "pixel_sha256": "0bc45037d076edfc159c8c9f14cc2a8402db786090719c5efb66fc46ee5d4006",
+      "image_file_sha256": "9fdf353c145ff49bb8f30efae2a3a425c80abc8a23b3806120566568e116ccc3",
+      "source_state": null,
+      "transform_index": null
+    },
+    {
+      "id": "I1",
+      "index": 1,
+      "label": "Create",
+      "editor_operation": "crud.create",
+      "image_path": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0001.png",
+      "rgb_path": "",
+      "hex_path": "",
+      "side_length": 700,
+      "pixel_count": 490000,
+      "pixel_sha256": "5b8828255dffe2359078cc4804efae1d1e2198d3eccb44dcbf43b20975eb19e4",
+      "image_file_sha256": "43e9c3482847ee4b300435ac018ce57632db43da4d2140bae80ef4d1b4fc2907",
+      "source_state": "I0",
+      "transform_index": 1
+    },
+    {
+      "id": "I2",
+      "index": 2,
+      "label": "Read",
+      "editor_operation": "crud.read",
+      "image_path": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0002.png",
+      "rgb_path": "",
+      "hex_path": "",
+      "side_length": 700,
+      "pixel_count": 490000,
+      "pixel_sha256": "72319365768c71968b3597269675a2babf5bd254e454633144cb939067169a8f",
+      "image_file_sha256": "5e9cf156a2d55e6fdf44c6f350fd268b2c7aacf550de4311ce1528b52cc191a1",
+      "source_state": "I1",
+      "transform_index": 2
+    },
+    {
+      "id": "I3",
+      "index": 3,
+      "label": "Update",
+      "editor_operation": "crud.update",
+      "image_path": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0003.png",
+      "rgb_path": "",
+      "hex_path": "",
+      "side_length": 700,
+      "pixel_count": 490000,
+      "pixel_sha256": "97156d4d2aa4e5ab27df8a8ea909a7e15b167167a8a9624cd0752564bcc1c413",
+      "image_file_sha256": "3237997cd0e60145f86b3adfda5295a5353a61f19f0ad49a9b8f48549e9f156a",
+      "source_state": "I2",
+      "transform_index": 3
+    },
+    {
+      "id": "I4",
+      "index": 4,
+      "label": "Delete",
+      "editor_operation": "crud.delete",
+      "image_path": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0004.png",
+      "rgb_path": "",
+      "hex_path": "",
+      "side_length": 700,
+      "pixel_count": 490000,
+      "pixel_sha256": "dc03f910cdbba257cc4dc24f7fc63807973a418df20f19602711b034c1e9d762",
+      "image_file_sha256": "21b0610738c1d63dfad16546a5091935ccc6f2e3ecf7e49a22076377540e5657",
+      "source_state": "I3",
+      "transform_index": 4
+    },
+    {
+      "id": "I5",
+      "index": 5,
+      "label": "Batch Create",
+      "editor_operation": "batch.create",
+      "image_path": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0005.png",
+      "rgb_path": "",
+      "hex_path": "",
+      "side_length": 700,
+      "pixel_count": 490000,
+      "pixel_sha256": "d77612f8fd1cb8573971bd3179bd1ca95d32d01706899bc17b3cbcb4704dfedd",
+      "image_file_sha256": "0242e76407eda5d37cb370d94ba33ed0caa7831348aacfd669902f57c8704727",
+      "source_state": "I4",
+      "transform_index": 5
+    },
+    {
+      "id": "I6",
+      "index": 6,
+      "label": "Batch Read",
+      "editor_operation": "batch.read",
+      "image_path": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0006.png",
+      "rgb_path": "",
+      "hex_path": "",
+      "side_length": 700,
+      "pixel_count": 490000,
+      "pixel_sha256": "b9b4180c02e192959c0acdcd5a6e5e95b8b91cf4a7a3bdd4ee6d134240b11c22",
+      "image_file_sha256": "43a20b2363c10f23fe0d214f4e5027fbda4744a13f662f6753ac28f2ea5a3eb8",
+      "source_state": "I5",
+      "transform_index": 6
+    },
+    {
+      "id": "I7",
+      "index": 7,
+      "label": "Batch Update",
+      "editor_operation": "batch.update",
+      "image_path": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0007.png",
+      "rgb_path": "",
+      "hex_path": "",
+      "side_length": 700,
+      "pixel_count": 490000,
+      "pixel_sha256": "66eda921759b83bf76eb4bdc76fd7be3fde5530a6c94b41675f373fc312caa48",
+      "image_file_sha256": "42d53755bb40a0fb372e6785c2ef253b4da3174c51e089a84fbf279405dc6557",
+      "source_state": "I6",
+      "transform_index": 7
+    },
+    {
+      "id": "I8",
+      "index": 8,
+      "label": "Batch Delete",
+      "editor_operation": "batch.delete",
+      "image_path": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0008.png",
+      "rgb_path": "",
+      "hex_path": "",
+      "side_length": 700,
+      "pixel_count": 490000,
+      "pixel_sha256": "bcbe4686ced0a53ca51c6b6d38034d4837770f08b735fe87c1eaa481e230b609",
+      "image_file_sha256": "d24e02817e336ef1d9fb974fb0c76ceae8c626bc75ff77170fb4807d9b96f154",
+      "source_state": "I7",
+      "transform_index": 8
+    },
+    {
+      "id": "I9",
+      "index": 9,
+      "label": "Python Scripts",
+      "editor_operation": "python.plugins",
+      "image_path": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0009.png",
+      "rgb_path": "",
+      "hex_path": "",
+      "side_length": 700,
+      "pixel_count": 490000,
+      "pixel_sha256": "a633b38f998b8ed8e8c83f7fd8c49bd88adb190156a228ee559b626d01495027",
+      "image_file_sha256": "30379ff15797425c949d23cb6ec8439c05f0125999ade1d006f56a3bd849d030",
+      "source_state": "I8",
+      "transform_index": 9
+    },
+    {
+      "id": "I10",
+      "index": 10,
+      "label": "Configuration",
+      "editor_operation": "config.style",
+      "image_path": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0010.png",
+      "rgb_path": "",
+      "hex_path": "",
+      "side_length": 700,
+      "pixel_count": 490000,
+      "pixel_sha256": "bc12659eb2c2b596f0ede2dd600629afcd8359d5ed3cfeb94def3ee688e7dff6",
+      "image_file_sha256": "ae6d97f7d31da07a32ca8b8e820b75821e79a0bf94c311ae84a2b5c6e1e0ecb9",
+      "source_state": "I9",
+      "transform_index": 10
+    },
+    {
+      "id": "I11",
+      "index": 11,
+      "label": "Persistence",
+      "editor_operation": "session.persistence",
+      "image_path": "D:\\execute\\omicron\\pathfinder_text_editor_session\\states\\I0011.png",
+      "rgb_path": "",
+      "hex_path": "",
+      "side_length": 700,
+      "pixel_count": 490000,
+      "pixel_sha256": "0a1928685331d91bddcf9cb5ed75fbeb2dafc6f36b8a1c68e4857f354d3187f8",
+      "image_file_sha256": "09ca122864632461836dee0f05bb80080734afda46e171163ecd79e281e78e19",
+      "source_state": "I10",
+      "transform_index": 11
+    }
+  ],
+  "tensor_states": [
+    {
+      "state_id": "I0",
+      "workspace_bank": "2",
+      "workspace_register": "0"
+    },
+    {
+      "state_id": "I1",
+      "workspace_bank": "2",
+      "workspace_register": "1"
+    },
+    {
+      "state_id": "I2",
+      "workspace_bank": "2",
+      "workspace_register": "2"
+    },
+    {
+      "state_id": "I3",
+      "workspace_bank": "2",
+      "workspace_register": "3"
+    },
+    {
+      "state_id": "I4",
+      "workspace_bank": "2",
+      "workspace_register": "4"
+    },
+    {
+      "state_id": "I5",
+      "workspace_bank": "2",
+      "workspace_register": "5"
+    },
+    {
+      "state_id": "I6",
+      "workspace_bank": "2",
+      "workspace_register": "6"
+    },
+    {
+      "state_id": "I7",
+      "workspace_bank": "2",
+      "workspace_register": "7"
+    },
+    {
+      "state_id": "I8",
+      "workspace_bank": "2",
+      "workspace_register": "8"
+    },
+    {
+      "state_id": "I9",
+      "workspace_bank": "2",
+      "workspace_register": "9"
+    },
+    {
+      "state_id": "I10",
+      "workspace_bank": "2",
+      "workspace_register": "10"
+    },
+    {
+      "state_id": "I11",
+      "workspace_bank": "2",
+      "workspace_register": "11"
+    }
+  ],
+  "transforms": [
+    {
+      "index": 1,
+      "from": "I0",
+      "to": "I1",
+      "parameters": {
+        "kind": "text-editor-session-transition",
+        "operation": "crud.create"
+      }
+    },
+    {
+      "index": 2,
+      "from": "I1",
+      "to": "I2",
+      "parameters": {
+        "kind": "text-editor-session-transition",
+        "operation": "crud.read"
+      }
+    },
+    {
+      "index": 3,
+      "from": "I2",
+      "to": "I3",
+      "parameters": {
+        "kind": "text-editor-session-transition",
+        "operation": "crud.update"
+      }
+    },
+    {
+      "index": 4,
+      "from": "I3",
+      "to": "I4",
+      "parameters": {
+        "kind": "text-editor-session-transition",
+        "operation": "crud.delete"
+      }
+    },
+    {
+      "index": 5,
+      "from": "I4",
+      "to": "I5",
+      "parameters": {
+        "kind": "text-editor-session-transition",
+        "operation": "batch.create"
+      }
+    },
+    {
+      "index": 6,
+      "from": "I5",
+      "to": "I6",
+      "parameters": {
+        "kind": "text-editor-session-transition",
+        "operation": "batch.read"
+      }
+    },
+    {
+      "index": 7,
+      "from": "I6",
+      "to": "I7",
+      "parameters": {
+        "kind": "text-editor-session-transition",
+        "operation": "batch.update"
+      }
+    },
+    {
+      "index": 8,
+      "from": "I7",
+      "to": "I8",
+      "parameters": {
+        "kind": "text-editor-session-transition",
+        "operation": "batch.delete"
+      }
+    },
+    {
+      "index": 9,
+      "from": "I8",
+      "to": "I9",
+      "parameters": {
+        "kind": "text-editor-session-transition",
+        "operation": "python.plugins"
+      }
+    },
+    {
+      "index": 10,
+      "from": "I9",
+      "to": "I10",
+      "parameters": {
+        "kind": "text-editor-session-transition",
+        "operation": "config.style"
+      }
+    },
+    {
+      "index": 11,
+      "from": "I10",
+      "to": "I11",
+      "parameters": {
+        "kind": "text-editor-session-transition",
+        "operation": "session.persistence"
+      }
+    }
+  ],
+  "basis": {
+    "engine_path": "",
+    "config_path": "",
+    "json_path": "",
+    "seed_file": "",
+    "seed_build_path": "",
+    "metadata": {
+      "program": "state-gen.py text editor session generator"
+    },
+    "seed_metadata": {
+      "basis_row_count": "12",
+      "basis_address": "text-editor-session"
+    },
+    "B_raw": [],
+    "B_residue": [],
+    "B_raw_sha256": "",
+    "B_residue_sha256": ""
+  },
+  "basis_addresses": [
+    "text-editor-session"
+  ],
+  "bootstrap_sequence": [
+    "I0",
+    "I1",
+    "I2",
+    "I3",
+    "I4",
+    "I5",
+    "I6",
+    "I7",
+    "I8",
+    "I9",
+    "I10",
+    "I11"
+  ],
+  "command_bindings": {
+    "boot": "I0",
+    "create": "I1",
+    "read": "I2",
+    "update": "I3",
+    "delete": "I4",
+    "batch-create": "I5",
+    "batch-read": "I6",
+    "batch-update": "I7",
+    "batch-delete": "I8",
+    "plugins": "I9",
+    "config": "I10",
+    "persist": "I11"
+  },
+  "runtime_surfaces": [
+    {
+      "id": "text-editor-runtime",
+      "renderer": "tkinter-canvas",
+      "state_source": "bootstrap_sequence"
+    }
+  ],
+  "quadtree_cells": [
+    {
+      "state_id": "I0",
+      "cell_path": "0"
+    },
+    {
+      "state_id": "I1",
+      "cell_path": "1"
+    },
+    {
+      "state_id": "I2",
+      "cell_path": "2"
+    },
+    {
+      "state_id": "I3",
+      "cell_path": "3"
+    },
+    {
+      "state_id": "I4",
+      "cell_path": "4"
+    },
+    {
+      "state_id": "I5",
+      "cell_path": "5"
+    },
+    {
+      "state_id": "I6",
+      "cell_path": "6"
+    },
+    {
+      "state_id": "I7",
+      "cell_path": "7"
+    },
+    {
+      "state_id": "I8",
+      "cell_path": "8"
+    },
+    {
+      "state_id": "I9",
+      "cell_path": "9"
+    },
+    {
+      "state_id": "I10",
+      "cell_path": "10"
+    },
+    {
+      "state_id": "I11",
+      "cell_path": "11"
+    }
+  ],
+  "state_programming": {
+    "type": "pathfinder-state-programming-v1",
+    "version": 1,
+    "created_at": "2026-06-20T11:16:56+00:00",
+    "updated_at": "2026-06-20T11:20:27+00:00",
+    "states": {
+      "I0": {
+        "input_events": [],
+        "processors": [],
+        "output_events": []
+      },
+      "I1": {
+        "input_events": [
+          {
+            "id": "input-cdcaa62f98",
+            "kind": "input",
+            "name": "text-session:singular-create",
+            "event_type": "python",
+            "language": "python",
+            "enabled": true,
+            "source_path": null,
+            "code": "\nproject_dir = Path(manifest.get(\"output_directory\", manifest_path.parent if \"manifest_path\" in globals() else \".\")).resolve()\nstore_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"store_path\") or project_dir / \"text-session-store.json\")\nconfig_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"config_path\") or project_dir / \"text-session-config.json\")\nplugins_dir = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"plugins_dir\") or project_dir / \"plugins\")\nexports_dir = project_dir / \"exports\"\nplugins_dir.mkdir(parents=True, exist_ok=True)\nexports_dir.mkdir(parents=True, exist_ok=True)\n\ndef _read_json(path, default):\n    path = Path(path)\n    if path.exists():\n        return json.loads(path.read_text(encoding=\"utf-8\"))\n    return json.loads(json.dumps(default))\n\ndef _write_json(path, value):\n    path = Path(path)\n    path.parent.mkdir(parents=True, exist_ok=True)\n    import os\n    import uuid\n    tmp = path.with_name(f\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\")\n    try:\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \"\\n\", encoding=\"utf-8\")\n        tmp.replace(path)\n    finally:\n        if tmp.exists():\n            tmp.unlink()\n\nstore = _read_json(store_path, {\"type\": \"pathfinder-text-session-store-v1\", \"documents\": {}, \"history\": []})\nconfig = _read_json(config_path, {\"type\": \"pathfinder-text-session-config-v1\", \"style\": {}, \"behaviors\": {}, \"plugins\": {}})\npayload = event.get(\"payload\", {}) if isinstance(event, dict) else {}\nif not isinstance(payload, dict):\n    payload = {\"value\": payload}\n\ndef _record(action, detail):\n    store.setdefault(\"history\", []).append({\n        \"at\": now_utc(),\n        \"state\": state_id,\n        \"action\": action,\n        \"detail\": detail,\n    })\n\ndef _documents():\n    return store.setdefault(\"documents\", {})\n\ndef _select_ids():\n    docs = _documents()\n    ids = payload.get(\"ids\")\n    if isinstance(ids, str):\n        return [ids]\n    if isinstance(ids, list):\n        return [str(item) for item in ids if str(item) in docs]\n    query = str(payload.get(\"query\", \"\")).lower()\n    if query:\n        return [\n            doc_id for doc_id, doc in docs.items()\n            if query in doc_id.lower()\n            or query in str(doc.get(\"title\", \"\")).lower()\n            or query in str(doc.get(\"content\", \"\")).lower()\n        ]\n    if payload.get(\"all\"):\n        return list(docs.keys())\n    doc_id = payload.get(\"id\")\n    return [str(doc_id)] if doc_id is not None else []\n\ndef _save():\n    _write_json(store_path, store)\n    _write_json(config_path, config)\n    manifest.setdefault(\"text_editor_session\", {})[\"store_path\"] = str(store_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"config_path\"] = str(config_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"plugins_dir\"] = str(plugins_dir)\n\ndocs = _documents()\ndoc_id = str(payload.get(\"id\") or payload.get(\"name\") or f\"doc-{len(docs) + 1:04d}\")\nif doc_id in docs and not payload.get(\"replace\"):\n    raise ValueError(f\"document already exists: {doc_id}\")\ndocs[doc_id] = {\n    \"id\": doc_id,\n    \"title\": payload.get(\"title\", doc_id),\n    \"content\": payload.get(\"content\", \"\"),\n    \"metadata\": payload.get(\"metadata\", {}),\n    \"created_at\": now_utc(),\n    \"updated_at\": now_utc(),\n    \"revisions\": [],\n}\n_record(\"create\", {\"id\": doc_id})\n_save()\nemit({\"created\": doc_id, \"count\": len(docs)})\n",
+            "created_at": "2026-06-20T11:20:27+00:00",
+            "updated_at": "2026-06-20T11:20:27+00:00",
+            "last_run_at": null,
+            "last_status": "never-run",
+            "last_error": null
+          }
+        ],
+        "processors": [],
+        "output_events": []
+      },
+      "I2": {
+        "input_events": [],
+        "processors": [],
+        "output_events": [
+          {
+            "id": "output-bcb18b3bd2",
+            "kind": "output",
+            "name": "text-session:singular-read",
+            "event_type": "python",
+            "language": "python",
+            "enabled": true,
+            "source_path": null,
+            "code": "\nproject_dir = Path(manifest.get(\"output_directory\", manifest_path.parent if \"manifest_path\" in globals() else \".\")).resolve()\nstore_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"store_path\") or project_dir / \"text-session-store.json\")\nconfig_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"config_path\") or project_dir / \"text-session-config.json\")\nplugins_dir = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"plugins_dir\") or project_dir / \"plugins\")\nexports_dir = project_dir / \"exports\"\nplugins_dir.mkdir(parents=True, exist_ok=True)\nexports_dir.mkdir(parents=True, exist_ok=True)\n\ndef _read_json(path, default):\n    path = Path(path)\n    if path.exists():\n        return json.loads(path.read_text(encoding=\"utf-8\"))\n    return json.loads(json.dumps(default))\n\ndef _write_json(path, value):\n    path = Path(path)\n    path.parent.mkdir(parents=True, exist_ok=True)\n    import os\n    import uuid\n    tmp = path.with_name(f\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\")\n    try:\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \"\\n\", encoding=\"utf-8\")\n        tmp.replace(path)\n    finally:\n        if tmp.exists():\n            tmp.unlink()\n\nstore = _read_json(store_path, {\"type\": \"pathfinder-text-session-store-v1\", \"documents\": {}, \"history\": []})\nconfig = _read_json(config_path, {\"type\": \"pathfinder-text-session-config-v1\", \"style\": {}, \"behaviors\": {}, \"plugins\": {}})\npayload = event.get(\"payload\", {}) if isinstance(event, dict) else {}\nif not isinstance(payload, dict):\n    payload = {\"value\": payload}\n\ndef _record(action, detail):\n    store.setdefault(\"history\", []).append({\n        \"at\": now_utc(),\n        \"state\": state_id,\n        \"action\": action,\n        \"detail\": detail,\n    })\n\ndef _documents():\n    return store.setdefault(\"documents\", {})\n\ndef _select_ids():\n    docs = _documents()\n    ids = payload.get(\"ids\")\n    if isinstance(ids, str):\n        return [ids]\n    if isinstance(ids, list):\n        return [str(item) for item in ids if str(item) in docs]\n    query = str(payload.get(\"query\", \"\")).lower()\n    if query:\n        return [\n            doc_id for doc_id, doc in docs.items()\n            if query in doc_id.lower()\n            or query in str(doc.get(\"title\", \"\")).lower()\n            or query in str(doc.get(\"content\", \"\")).lower()\n        ]\n    if payload.get(\"all\"):\n        return list(docs.keys())\n    doc_id = payload.get(\"id\")\n    return [str(doc_id)] if doc_id is not None else []\n\ndef _save():\n    _write_json(store_path, store)\n    _write_json(config_path, config)\n    manifest.setdefault(\"text_editor_session\", {})[\"store_path\"] = str(store_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"config_path\"] = str(config_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"plugins_dir\"] = str(plugins_dir)\n\ndocs = _documents()\ndoc_id = payload.get(\"id\")\nif doc_id is None:\n    emit({\"documents\": list(docs.values()), \"count\": len(docs)})\nelse:\n    doc_id = str(doc_id)\n    if doc_id not in docs:\n        raise KeyError(f\"document not found: {doc_id}\")\n    _record(\"read\", {\"id\": doc_id})\n    _save()\n    emit(docs[doc_id])\n",
+            "created_at": "2026-06-20T11:20:27+00:00",
+            "updated_at": "2026-06-20T11:20:27+00:00",
+            "last_run_at": null,
+            "last_status": "never-run",
+            "last_error": null
+          }
+        ]
+      },
+      "I3": {
+        "input_events": [],
+        "processors": [
+          {
+            "id": "process-4257a0df69",
+            "kind": "process",
+            "name": "text-session:singular-update",
+            "event_type": "python",
+            "language": "python",
+            "enabled": true,
+            "source_path": null,
+            "code": "\nproject_dir = Path(manifest.get(\"output_directory\", manifest_path.parent if \"manifest_path\" in globals() else \".\")).resolve()\nstore_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"store_path\") or project_dir / \"text-session-store.json\")\nconfig_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"config_path\") or project_dir / \"text-session-config.json\")\nplugins_dir = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"plugins_dir\") or project_dir / \"plugins\")\nexports_dir = project_dir / \"exports\"\nplugins_dir.mkdir(parents=True, exist_ok=True)\nexports_dir.mkdir(parents=True, exist_ok=True)\n\ndef _read_json(path, default):\n    path = Path(path)\n    if path.exists():\n        return json.loads(path.read_text(encoding=\"utf-8\"))\n    return json.loads(json.dumps(default))\n\ndef _write_json(path, value):\n    path = Path(path)\n    path.parent.mkdir(parents=True, exist_ok=True)\n    import os\n    import uuid\n    tmp = path.with_name(f\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\")\n    try:\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \"\\n\", encoding=\"utf-8\")\n        tmp.replace(path)\n    finally:\n        if tmp.exists():\n            tmp.unlink()\n\nstore = _read_json(store_path, {\"type\": \"pathfinder-text-session-store-v1\", \"documents\": {}, \"history\": []})\nconfig = _read_json(config_path, {\"type\": \"pathfinder-text-session-config-v1\", \"style\": {}, \"behaviors\": {}, \"plugins\": {}})\npayload = event.get(\"payload\", {}) if isinstance(event, dict) else {}\nif not isinstance(payload, dict):\n    payload = {\"value\": payload}\n\ndef _record(action, detail):\n    store.setdefault(\"history\", []).append({\n        \"at\": now_utc(),\n        \"state\": state_id,\n        \"action\": action,\n        \"detail\": detail,\n    })\n\ndef _documents():\n    return store.setdefault(\"documents\", {})\n\ndef _select_ids():\n    docs = _documents()\n    ids = payload.get(\"ids\")\n    if isinstance(ids, str):\n        return [ids]\n    if isinstance(ids, list):\n        return [str(item) for item in ids if str(item) in docs]\n    query = str(payload.get(\"query\", \"\")).lower()\n    if query:\n        return [\n            doc_id for doc_id, doc in docs.items()\n            if query in doc_id.lower()\n            or query in str(doc.get(\"title\", \"\")).lower()\n            or query in str(doc.get(\"content\", \"\")).lower()\n        ]\n    if payload.get(\"all\"):\n        return list(docs.keys())\n    doc_id = payload.get(\"id\")\n    return [str(doc_id)] if doc_id is not None else []\n\ndef _save():\n    _write_json(store_path, store)\n    _write_json(config_path, config)\n    manifest.setdefault(\"text_editor_session\", {})[\"store_path\"] = str(store_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"config_path\"] = str(config_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"plugins_dir\"] = str(plugins_dir)\n\ndocs = _documents()\ndoc_id = str(payload.get(\"id\"))\nif doc_id not in docs:\n    raise KeyError(f\"document not found: {doc_id}\")\ndoc = docs[doc_id]\ndoc.setdefault(\"revisions\", []).append({\"at\": now_utc(), \"content\": doc.get(\"content\", \"\")})\ncontent = str(doc.get(\"content\", \"\"))\nif \"content\" in payload:\n    content = str(payload[\"content\"])\nif \"append\" in payload:\n    content += str(payload[\"append\"])\nif \"prepend\" in payload:\n    content = str(payload[\"prepend\"]) + content\nif \"find\" in payload:\n    content = content.replace(str(payload.get(\"find\", \"\")), str(payload.get(\"replace\", \"\")))\ndoc[\"content\"] = content\ndoc[\"title\"] = payload.get(\"title\", doc.get(\"title\", doc_id))\ndoc[\"metadata\"] = {**doc.get(\"metadata\", {}), **payload.get(\"metadata\", {})}\ndoc[\"updated_at\"] = now_utc()\n_record(\"update\", {\"id\": doc_id})\n_save()\nemit({\"updated\": doc_id, \"length\": len(content)})\n",
+            "created_at": "2026-06-20T11:20:27+00:00",
+            "updated_at": "2026-06-20T11:20:27+00:00",
+            "last_run_at": null,
+            "last_status": "never-run",
+            "last_error": null
+          }
+        ],
+        "output_events": []
+      },
+      "I4": {
+        "input_events": [],
+        "processors": [
+          {
+            "id": "process-8765ea9d74",
+            "kind": "process",
+            "name": "text-session:singular-delete",
+            "event_type": "python",
+            "language": "python",
+            "enabled": true,
+            "source_path": null,
+            "code": "\nproject_dir = Path(manifest.get(\"output_directory\", manifest_path.parent if \"manifest_path\" in globals() else \".\")).resolve()\nstore_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"store_path\") or project_dir / \"text-session-store.json\")\nconfig_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"config_path\") or project_dir / \"text-session-config.json\")\nplugins_dir = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"plugins_dir\") or project_dir / \"plugins\")\nexports_dir = project_dir / \"exports\"\nplugins_dir.mkdir(parents=True, exist_ok=True)\nexports_dir.mkdir(parents=True, exist_ok=True)\n\ndef _read_json(path, default):\n    path = Path(path)\n    if path.exists():\n        return json.loads(path.read_text(encoding=\"utf-8\"))\n    return json.loads(json.dumps(default))\n\ndef _write_json(path, value):\n    path = Path(path)\n    path.parent.mkdir(parents=True, exist_ok=True)\n    import os\n    import uuid\n    tmp = path.with_name(f\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\")\n    try:\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \"\\n\", encoding=\"utf-8\")\n        tmp.replace(path)\n    finally:\n        if tmp.exists():\n            tmp.unlink()\n\nstore = _read_json(store_path, {\"type\": \"pathfinder-text-session-store-v1\", \"documents\": {}, \"history\": []})\nconfig = _read_json(config_path, {\"type\": \"pathfinder-text-session-config-v1\", \"style\": {}, \"behaviors\": {}, \"plugins\": {}})\npayload = event.get(\"payload\", {}) if isinstance(event, dict) else {}\nif not isinstance(payload, dict):\n    payload = {\"value\": payload}\n\ndef _record(action, detail):\n    store.setdefault(\"history\", []).append({\n        \"at\": now_utc(),\n        \"state\": state_id,\n        \"action\": action,\n        \"detail\": detail,\n    })\n\ndef _documents():\n    return store.setdefault(\"documents\", {})\n\ndef _select_ids():\n    docs = _documents()\n    ids = payload.get(\"ids\")\n    if isinstance(ids, str):\n        return [ids]\n    if isinstance(ids, list):\n        return [str(item) for item in ids if str(item) in docs]\n    query = str(payload.get(\"query\", \"\")).lower()\n    if query:\n        return [\n            doc_id for doc_id, doc in docs.items()\n            if query in doc_id.lower()\n            or query in str(doc.get(\"title\", \"\")).lower()\n            or query in str(doc.get(\"content\", \"\")).lower()\n        ]\n    if payload.get(\"all\"):\n        return list(docs.keys())\n    doc_id = payload.get(\"id\")\n    return [str(doc_id)] if doc_id is not None else []\n\ndef _save():\n    _write_json(store_path, store)\n    _write_json(config_path, config)\n    manifest.setdefault(\"text_editor_session\", {})[\"store_path\"] = str(store_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"config_path\"] = str(config_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"plugins_dir\"] = str(plugins_dir)\n\ndocs = _documents()\ndoc_id = str(payload.get(\"id\"))\nif doc_id not in docs:\n    raise KeyError(f\"document not found: {doc_id}\")\ndeleted = docs.pop(doc_id)\nif config.get(\"behaviors\", {}).get(\"archive_on_delete\", True) or payload.get(\"archive\"):\n    archive = store.setdefault(\"deleted_archive\", [])\n    archive.append({\"at\": now_utc(), \"document\": deleted})\n_record(\"delete\", {\"id\": doc_id})\n_save()\nemit({\"deleted\": doc_id, \"remaining\": len(docs)})\n",
+            "created_at": "2026-06-20T11:20:27+00:00",
+            "updated_at": "2026-06-20T11:20:27+00:00",
+            "last_run_at": null,
+            "last_status": "never-run",
+            "last_error": null
+          }
+        ],
+        "output_events": []
+      },
+      "I5": {
+        "input_events": [
+          {
+            "id": "input-7f6f72b7aa",
+            "kind": "input",
+            "name": "text-session:batch-create",
+            "event_type": "python",
+            "language": "python",
+            "enabled": true,
+            "source_path": null,
+            "code": "\nproject_dir = Path(manifest.get(\"output_directory\", manifest_path.parent if \"manifest_path\" in globals() else \".\")).resolve()\nstore_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"store_path\") or project_dir / \"text-session-store.json\")\nconfig_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"config_path\") or project_dir / \"text-session-config.json\")\nplugins_dir = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"plugins_dir\") or project_dir / \"plugins\")\nexports_dir = project_dir / \"exports\"\nplugins_dir.mkdir(parents=True, exist_ok=True)\nexports_dir.mkdir(parents=True, exist_ok=True)\n\ndef _read_json(path, default):\n    path = Path(path)\n    if path.exists():\n        return json.loads(path.read_text(encoding=\"utf-8\"))\n    return json.loads(json.dumps(default))\n\ndef _write_json(path, value):\n    path = Path(path)\n    path.parent.mkdir(parents=True, exist_ok=True)\n    import os\n    import uuid\n    tmp = path.with_name(f\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\")\n    try:\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \"\\n\", encoding=\"utf-8\")\n        tmp.replace(path)\n    finally:\n        if tmp.exists():\n            tmp.unlink()\n\nstore = _read_json(store_path, {\"type\": \"pathfinder-text-session-store-v1\", \"documents\": {}, \"history\": []})\nconfig = _read_json(config_path, {\"type\": \"pathfinder-text-session-config-v1\", \"style\": {}, \"behaviors\": {}, \"plugins\": {}})\npayload = event.get(\"payload\", {}) if isinstance(event, dict) else {}\nif not isinstance(payload, dict):\n    payload = {\"value\": payload}\n\ndef _record(action, detail):\n    store.setdefault(\"history\", []).append({\n        \"at\": now_utc(),\n        \"state\": state_id,\n        \"action\": action,\n        \"detail\": detail,\n    })\n\ndef _documents():\n    return store.setdefault(\"documents\", {})\n\ndef _select_ids():\n    docs = _documents()\n    ids = payload.get(\"ids\")\n    if isinstance(ids, str):\n        return [ids]\n    if isinstance(ids, list):\n        return [str(item) for item in ids if str(item) in docs]\n    query = str(payload.get(\"query\", \"\")).lower()\n    if query:\n        return [\n            doc_id for doc_id, doc in docs.items()\n            if query in doc_id.lower()\n            or query in str(doc.get(\"title\", \"\")).lower()\n            or query in str(doc.get(\"content\", \"\")).lower()\n        ]\n    if payload.get(\"all\"):\n        return list(docs.keys())\n    doc_id = payload.get(\"id\")\n    return [str(doc_id)] if doc_id is not None else []\n\ndef _save():\n    _write_json(store_path, store)\n    _write_json(config_path, config)\n    manifest.setdefault(\"text_editor_session\", {})[\"store_path\"] = str(store_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"config_path\"] = str(config_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"plugins_dir\"] = str(plugins_dir)\n\ndocs = _documents()\nincoming = payload.get(\"documents\") or []\nif not incoming:\n    incoming = [\n        {\"id\": \"batch-0001\", \"title\": \"Batch document 1\", \"content\": \"Generated by batch create.\"},\n        {\"id\": \"batch-0002\", \"title\": \"Batch document 2\", \"content\": \"Generated by batch create.\"},\n    ]\ncreated = []\nfor item in incoming:\n    doc_id = str(item.get(\"id\") or item.get(\"name\") or f\"doc-{len(docs) + 1:04d}\")\n    docs[doc_id] = {\n        \"id\": doc_id,\n        \"title\": item.get(\"title\", doc_id),\n        \"content\": item.get(\"content\", \"\"),\n        \"metadata\": item.get(\"metadata\", {}),\n        \"created_at\": now_utc(),\n        \"updated_at\": now_utc(),\n        \"revisions\": [],\n    }\n    created.append(doc_id)\n_record(\"batch-create\", {\"ids\": created})\n_save()\nemit({\"created\": created, \"count\": len(created)})\n",
+            "created_at": "2026-06-20T11:20:27+00:00",
+            "updated_at": "2026-06-20T11:20:27+00:00",
+            "last_run_at": null,
+            "last_status": "never-run",
+            "last_error": null
+          }
+        ],
+        "processors": [],
+        "output_events": []
+      },
+      "I6": {
+        "input_events": [],
+        "processors": [],
+        "output_events": [
+          {
+            "id": "output-88747ebdd1",
+            "kind": "output",
+            "name": "text-session:batch-read-export",
+            "event_type": "python",
+            "language": "python",
+            "enabled": true,
+            "source_path": null,
+            "code": "\nproject_dir = Path(manifest.get(\"output_directory\", manifest_path.parent if \"manifest_path\" in globals() else \".\")).resolve()\nstore_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"store_path\") or project_dir / \"text-session-store.json\")\nconfig_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"config_path\") or project_dir / \"text-session-config.json\")\nplugins_dir = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"plugins_dir\") or project_dir / \"plugins\")\nexports_dir = project_dir / \"exports\"\nplugins_dir.mkdir(parents=True, exist_ok=True)\nexports_dir.mkdir(parents=True, exist_ok=True)\n\ndef _read_json(path, default):\n    path = Path(path)\n    if path.exists():\n        return json.loads(path.read_text(encoding=\"utf-8\"))\n    return json.loads(json.dumps(default))\n\ndef _write_json(path, value):\n    path = Path(path)\n    path.parent.mkdir(parents=True, exist_ok=True)\n    import os\n    import uuid\n    tmp = path.with_name(f\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\")\n    try:\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \"\\n\", encoding=\"utf-8\")\n        tmp.replace(path)\n    finally:\n        if tmp.exists():\n            tmp.unlink()\n\nstore = _read_json(store_path, {\"type\": \"pathfinder-text-session-store-v1\", \"documents\": {}, \"history\": []})\nconfig = _read_json(config_path, {\"type\": \"pathfinder-text-session-config-v1\", \"style\": {}, \"behaviors\": {}, \"plugins\": {}})\npayload = event.get(\"payload\", {}) if isinstance(event, dict) else {}\nif not isinstance(payload, dict):\n    payload = {\"value\": payload}\n\ndef _record(action, detail):\n    store.setdefault(\"history\", []).append({\n        \"at\": now_utc(),\n        \"state\": state_id,\n        \"action\": action,\n        \"detail\": detail,\n    })\n\ndef _documents():\n    return store.setdefault(\"documents\", {})\n\ndef _select_ids():\n    docs = _documents()\n    ids = payload.get(\"ids\")\n    if isinstance(ids, str):\n        return [ids]\n    if isinstance(ids, list):\n        return [str(item) for item in ids if str(item) in docs]\n    query = str(payload.get(\"query\", \"\")).lower()\n    if query:\n        return [\n            doc_id for doc_id, doc in docs.items()\n            if query in doc_id.lower()\n            or query in str(doc.get(\"title\", \"\")).lower()\n            or query in str(doc.get(\"content\", \"\")).lower()\n        ]\n    if payload.get(\"all\"):\n        return list(docs.keys())\n    doc_id = payload.get(\"id\")\n    return [str(doc_id)] if doc_id is not None else []\n\ndef _save():\n    _write_json(store_path, store)\n    _write_json(config_path, config)\n    manifest.setdefault(\"text_editor_session\", {})[\"store_path\"] = str(store_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"config_path\"] = str(config_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"plugins_dir\"] = str(plugins_dir)\n\ndocs = _documents()\nids = _select_ids() or list(docs.keys())\nselected = [docs[doc_id] for doc_id in ids if doc_id in docs]\nexport_path = None\nif payload.get(\"export\", True):\n    export_path = exports_dir / str(payload.get(\"export_name\", \"batch-read.json\"))\n    export_path.write_text(json.dumps(selected, indent=2, ensure_ascii=False), encoding=\"utf-8\")\n_record(\"batch-read\", {\"ids\": ids, \"export_path\": str(export_path) if export_path else None})\n_save()\nemit({\"documents\": selected, \"count\": len(selected), \"export_path\": str(export_path) if export_path else None})\n",
+            "created_at": "2026-06-20T11:20:27+00:00",
+            "updated_at": "2026-06-20T11:20:27+00:00",
+            "last_run_at": null,
+            "last_status": "never-run",
+            "last_error": null
+          }
+        ]
+      },
+      "I7": {
+        "input_events": [],
+        "processors": [
+          {
+            "id": "process-ceba54e413",
+            "kind": "process",
+            "name": "text-session:batch-update",
+            "event_type": "python",
+            "language": "python",
+            "enabled": true,
+            "source_path": null,
+            "code": "\nproject_dir = Path(manifest.get(\"output_directory\", manifest_path.parent if \"manifest_path\" in globals() else \".\")).resolve()\nstore_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"store_path\") or project_dir / \"text-session-store.json\")\nconfig_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"config_path\") or project_dir / \"text-session-config.json\")\nplugins_dir = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"plugins_dir\") or project_dir / \"plugins\")\nexports_dir = project_dir / \"exports\"\nplugins_dir.mkdir(parents=True, exist_ok=True)\nexports_dir.mkdir(parents=True, exist_ok=True)\n\ndef _read_json(path, default):\n    path = Path(path)\n    if path.exists():\n        return json.loads(path.read_text(encoding=\"utf-8\"))\n    return json.loads(json.dumps(default))\n\ndef _write_json(path, value):\n    path = Path(path)\n    path.parent.mkdir(parents=True, exist_ok=True)\n    import os\n    import uuid\n    tmp = path.with_name(f\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\")\n    try:\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \"\\n\", encoding=\"utf-8\")\n        tmp.replace(path)\n    finally:\n        if tmp.exists():\n            tmp.unlink()\n\nstore = _read_json(store_path, {\"type\": \"pathfinder-text-session-store-v1\", \"documents\": {}, \"history\": []})\nconfig = _read_json(config_path, {\"type\": \"pathfinder-text-session-config-v1\", \"style\": {}, \"behaviors\": {}, \"plugins\": {}})\npayload = event.get(\"payload\", {}) if isinstance(event, dict) else {}\nif not isinstance(payload, dict):\n    payload = {\"value\": payload}\n\ndef _record(action, detail):\n    store.setdefault(\"history\", []).append({\n        \"at\": now_utc(),\n        \"state\": state_id,\n        \"action\": action,\n        \"detail\": detail,\n    })\n\ndef _documents():\n    return store.setdefault(\"documents\", {})\n\ndef _select_ids():\n    docs = _documents()\n    ids = payload.get(\"ids\")\n    if isinstance(ids, str):\n        return [ids]\n    if isinstance(ids, list):\n        return [str(item) for item in ids if str(item) in docs]\n    query = str(payload.get(\"query\", \"\")).lower()\n    if query:\n        return [\n            doc_id for doc_id, doc in docs.items()\n            if query in doc_id.lower()\n            or query in str(doc.get(\"title\", \"\")).lower()\n            or query in str(doc.get(\"content\", \"\")).lower()\n        ]\n    if payload.get(\"all\"):\n        return list(docs.keys())\n    doc_id = payload.get(\"id\")\n    return [str(doc_id)] if doc_id is not None else []\n\ndef _save():\n    _write_json(store_path, store)\n    _write_json(config_path, config)\n    manifest.setdefault(\"text_editor_session\", {})[\"store_path\"] = str(store_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"config_path\"] = str(config_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"plugins_dir\"] = str(plugins_dir)\n\ndocs = _documents()\nids = _select_ids()\nif not ids and payload.get(\"all\", True):\n    ids = list(docs.keys())\nupdated = []\nfor doc_id in ids:\n    if doc_id not in docs:\n        continue\n    doc = docs[doc_id]\n    doc.setdefault(\"revisions\", []).append({\"at\": now_utc(), \"content\": doc.get(\"content\", \"\")})\n    content = str(doc.get(\"content\", \"\"))\n    if \"find\" in payload:\n        content = content.replace(str(payload.get(\"find\", \"\")), str(payload.get(\"replace\", \"\")))\n    if \"prefix\" in payload:\n        content = str(payload[\"prefix\"]) + content\n    if \"suffix\" in payload:\n        content = content + str(payload[\"suffix\"])\n    transform = payload.get(\"transform\")\n    if transform == \"upper\":\n        content = content.upper()\n    elif transform == \"lower\":\n        content = content.lower()\n    elif transform == \"title\":\n        content = content.title()\n    doc[\"content\"] = content\n    doc[\"updated_at\"] = now_utc()\n    updated.append(doc_id)\n_record(\"batch-update\", {\"ids\": updated})\n_save()\nemit({\"updated\": updated, \"count\": len(updated)})\n",
+            "created_at": "2026-06-20T11:20:27+00:00",
+            "updated_at": "2026-06-20T11:20:27+00:00",
+            "last_run_at": null,
+            "last_status": "never-run",
+            "last_error": null
+          }
+        ],
+        "output_events": []
+      },
+      "I8": {
+        "input_events": [],
+        "processors": [
+          {
+            "id": "process-ad8b08ad1e",
+            "kind": "process",
+            "name": "text-session:batch-delete",
+            "event_type": "python",
+            "language": "python",
+            "enabled": true,
+            "source_path": null,
+            "code": "\nproject_dir = Path(manifest.get(\"output_directory\", manifest_path.parent if \"manifest_path\" in globals() else \".\")).resolve()\nstore_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"store_path\") or project_dir / \"text-session-store.json\")\nconfig_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"config_path\") or project_dir / \"text-session-config.json\")\nplugins_dir = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"plugins_dir\") or project_dir / \"plugins\")\nexports_dir = project_dir / \"exports\"\nplugins_dir.mkdir(parents=True, exist_ok=True)\nexports_dir.mkdir(parents=True, exist_ok=True)\n\ndef _read_json(path, default):\n    path = Path(path)\n    if path.exists():\n        return json.loads(path.read_text(encoding=\"utf-8\"))\n    return json.loads(json.dumps(default))\n\ndef _write_json(path, value):\n    path = Path(path)\n    path.parent.mkdir(parents=True, exist_ok=True)\n    import os\n    import uuid\n    tmp = path.with_name(f\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\")\n    try:\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \"\\n\", encoding=\"utf-8\")\n        tmp.replace(path)\n    finally:\n        if tmp.exists():\n            tmp.unlink()\n\nstore = _read_json(store_path, {\"type\": \"pathfinder-text-session-store-v1\", \"documents\": {}, \"history\": []})\nconfig = _read_json(config_path, {\"type\": \"pathfinder-text-session-config-v1\", \"style\": {}, \"behaviors\": {}, \"plugins\": {}})\npayload = event.get(\"payload\", {}) if isinstance(event, dict) else {}\nif not isinstance(payload, dict):\n    payload = {\"value\": payload}\n\ndef _record(action, detail):\n    store.setdefault(\"history\", []).append({\n        \"at\": now_utc(),\n        \"state\": state_id,\n        \"action\": action,\n        \"detail\": detail,\n    })\n\ndef _documents():\n    return store.setdefault(\"documents\", {})\n\ndef _select_ids():\n    docs = _documents()\n    ids = payload.get(\"ids\")\n    if isinstance(ids, str):\n        return [ids]\n    if isinstance(ids, list):\n        return [str(item) for item in ids if str(item) in docs]\n    query = str(payload.get(\"query\", \"\")).lower()\n    if query:\n        return [\n            doc_id for doc_id, doc in docs.items()\n            if query in doc_id.lower()\n            or query in str(doc.get(\"title\", \"\")).lower()\n            or query in str(doc.get(\"content\", \"\")).lower()\n        ]\n    if payload.get(\"all\"):\n        return list(docs.keys())\n    doc_id = payload.get(\"id\")\n    return [str(doc_id)] if doc_id is not None else []\n\ndef _save():\n    _write_json(store_path, store)\n    _write_json(config_path, config)\n    manifest.setdefault(\"text_editor_session\", {})[\"store_path\"] = str(store_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"config_path\"] = str(config_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"plugins_dir\"] = str(plugins_dir)\n\ndocs = _documents()\nids = _select_ids()\ndeleted = []\narchive = store.setdefault(\"deleted_archive\", [])\nfor doc_id in ids:\n    if doc_id in docs:\n        doc = docs.pop(doc_id)\n        deleted.append(doc_id)\n        if config.get(\"behaviors\", {}).get(\"archive_on_delete\", True) or payload.get(\"archive\", True):\n            archive.append({\"at\": now_utc(), \"document\": doc})\n_record(\"batch-delete\", {\"ids\": deleted})\n_save()\nemit({\"deleted\": deleted, \"count\": len(deleted), \"remaining\": len(docs)})\n",
+            "created_at": "2026-06-20T11:20:27+00:00",
+            "updated_at": "2026-06-20T11:20:27+00:00",
+            "last_run_at": null,
+            "last_status": "never-run",
+            "last_error": null
+          }
+        ],
+        "output_events": []
+      },
+      "I9": {
+        "input_events": [],
+        "processors": [
+          {
+            "id": "process-76c4b077c8",
+            "kind": "process",
+            "name": "text-session:python-plugin-dispatch",
+            "event_type": "python",
+            "language": "python",
+            "enabled": true,
+            "source_path": null,
+            "code": "\nproject_dir = Path(manifest.get(\"output_directory\", manifest_path.parent if \"manifest_path\" in globals() else \".\")).resolve()\nstore_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"store_path\") or project_dir / \"text-session-store.json\")\nconfig_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"config_path\") or project_dir / \"text-session-config.json\")\nplugins_dir = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"plugins_dir\") or project_dir / \"plugins\")\nexports_dir = project_dir / \"exports\"\nplugins_dir.mkdir(parents=True, exist_ok=True)\nexports_dir.mkdir(parents=True, exist_ok=True)\n\ndef _read_json(path, default):\n    path = Path(path)\n    if path.exists():\n        return json.loads(path.read_text(encoding=\"utf-8\"))\n    return json.loads(json.dumps(default))\n\ndef _write_json(path, value):\n    path = Path(path)\n    path.parent.mkdir(parents=True, exist_ok=True)\n    import os\n    import uuid\n    tmp = path.with_name(f\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\")\n    try:\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \"\\n\", encoding=\"utf-8\")\n        tmp.replace(path)\n    finally:\n        if tmp.exists():\n            tmp.unlink()\n\nstore = _read_json(store_path, {\"type\": \"pathfinder-text-session-store-v1\", \"documents\": {}, \"history\": []})\nconfig = _read_json(config_path, {\"type\": \"pathfinder-text-session-config-v1\", \"style\": {}, \"behaviors\": {}, \"plugins\": {}})\npayload = event.get(\"payload\", {}) if isinstance(event, dict) else {}\nif not isinstance(payload, dict):\n    payload = {\"value\": payload}\n\ndef _record(action, detail):\n    store.setdefault(\"history\", []).append({\n        \"at\": now_utc(),\n        \"state\": state_id,\n        \"action\": action,\n        \"detail\": detail,\n    })\n\ndef _documents():\n    return store.setdefault(\"documents\", {})\n\ndef _select_ids():\n    docs = _documents()\n    ids = payload.get(\"ids\")\n    if isinstance(ids, str):\n        return [ids]\n    if isinstance(ids, list):\n        return [str(item) for item in ids if str(item) in docs]\n    query = str(payload.get(\"query\", \"\")).lower()\n    if query:\n        return [\n            doc_id for doc_id, doc in docs.items()\n            if query in doc_id.lower()\n            or query in str(doc.get(\"title\", \"\")).lower()\n            or query in str(doc.get(\"content\", \"\")).lower()\n        ]\n    if payload.get(\"all\"):\n        return list(docs.keys())\n    doc_id = payload.get(\"id\")\n    return [str(doc_id)] if doc_id is not None else []\n\ndef _save():\n    _write_json(store_path, store)\n    _write_json(config_path, config)\n    manifest.setdefault(\"text_editor_session\", {})[\"store_path\"] = str(store_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"config_path\"] = str(config_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"plugins_dir\"] = str(plugins_dir)\n\nresults = []\nfor plugin_path in sorted(plugins_dir.glob(\"*.py\")):\n    ns = {\n        \"manifest\": manifest,\n        \"store\": store,\n        \"config\": config,\n        \"payload\": payload,\n        \"event\": event,\n        \"cursor\": cursor,\n        \"project_dir\": project_dir,\n        \"Path\": Path,\n        \"json\": json,\n        \"now_utc\": now_utc,\n        \"emit\": emit,\n    }\n    exec(compile(plugin_path.read_text(encoding=\"utf-8\"), str(plugin_path), \"exec\"), ns, ns)\n    result = None\n    if callable(ns.get(\"configure\")):\n        result = ns[\"configure\"](config)\n    if callable(ns.get(\"style\")):\n        style_result = ns[\"style\"](config.get(\"style\", {}))\n        if isinstance(style_result, dict):\n            config.setdefault(\"style\", {}).update(style_result)\n            result = style_result\n    if callable(ns.get(\"handle\")):\n        result = ns[\"handle\"]({\"store\": store, \"config\": config, \"payload\": payload, \"manifest\": manifest})\n    results.append({\"plugin\": plugin_path.name, \"result\": result})\n_record(\"plugins\", {\"plugins\": [item[\"plugin\"] for item in results]})\n_save()\nemit({\"plugins\": results, \"count\": len(results)})\n",
+            "created_at": "2026-06-20T11:20:27+00:00",
+            "updated_at": "2026-06-20T11:20:27+00:00",
+            "last_run_at": null,
+            "last_status": "never-run",
+            "last_error": null
+          }
+        ],
+        "output_events": []
+      },
+      "I10": {
+        "input_events": [],
+        "processors": [
+          {
+            "id": "process-43ab9e14b4",
+            "kind": "process",
+            "name": "text-session:configuration-style",
+            "event_type": "python",
+            "language": "python",
+            "enabled": true,
+            "source_path": null,
+            "code": "\nproject_dir = Path(manifest.get(\"output_directory\", manifest_path.parent if \"manifest_path\" in globals() else \".\")).resolve()\nstore_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"store_path\") or project_dir / \"text-session-store.json\")\nconfig_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"config_path\") or project_dir / \"text-session-config.json\")\nplugins_dir = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"plugins_dir\") or project_dir / \"plugins\")\nexports_dir = project_dir / \"exports\"\nplugins_dir.mkdir(parents=True, exist_ok=True)\nexports_dir.mkdir(parents=True, exist_ok=True)\n\ndef _read_json(path, default):\n    path = Path(path)\n    if path.exists():\n        return json.loads(path.read_text(encoding=\"utf-8\"))\n    return json.loads(json.dumps(default))\n\ndef _write_json(path, value):\n    path = Path(path)\n    path.parent.mkdir(parents=True, exist_ok=True)\n    import os\n    import uuid\n    tmp = path.with_name(f\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\")\n    try:\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \"\\n\", encoding=\"utf-8\")\n        tmp.replace(path)\n    finally:\n        if tmp.exists():\n            tmp.unlink()\n\nstore = _read_json(store_path, {\"type\": \"pathfinder-text-session-store-v1\", \"documents\": {}, \"history\": []})\nconfig = _read_json(config_path, {\"type\": \"pathfinder-text-session-config-v1\", \"style\": {}, \"behaviors\": {}, \"plugins\": {}})\npayload = event.get(\"payload\", {}) if isinstance(event, dict) else {}\nif not isinstance(payload, dict):\n    payload = {\"value\": payload}\n\ndef _record(action, detail):\n    store.setdefault(\"history\", []).append({\n        \"at\": now_utc(),\n        \"state\": state_id,\n        \"action\": action,\n        \"detail\": detail,\n    })\n\ndef _documents():\n    return store.setdefault(\"documents\", {})\n\ndef _select_ids():\n    docs = _documents()\n    ids = payload.get(\"ids\")\n    if isinstance(ids, str):\n        return [ids]\n    if isinstance(ids, list):\n        return [str(item) for item in ids if str(item) in docs]\n    query = str(payload.get(\"query\", \"\")).lower()\n    if query:\n        return [\n            doc_id for doc_id, doc in docs.items()\n            if query in doc_id.lower()\n            or query in str(doc.get(\"title\", \"\")).lower()\n            or query in str(doc.get(\"content\", \"\")).lower()\n        ]\n    if payload.get(\"all\"):\n        return list(docs.keys())\n    doc_id = payload.get(\"id\")\n    return [str(doc_id)] if doc_id is not None else []\n\ndef _save():\n    _write_json(store_path, store)\n    _write_json(config_path, config)\n    manifest.setdefault(\"text_editor_session\", {})[\"store_path\"] = str(store_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"config_path\"] = str(config_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"plugins_dir\"] = str(plugins_dir)\n\nconfig.setdefault(\"style\", {}).update(payload.get(\"style\", {}))\nconfig.setdefault(\"behaviors\", {}).update(payload.get(\"behaviors\", {}))\nif payload.get(\"reset\"):\n    config[\"style\"] = {\n        \"font_family\": \"Consolas\",\n        \"font_size\": 13,\n        \"foreground\": \"#101828\",\n        \"background\": \"#FFFFFF\",\n        \"accent\": \"#35B7A6\",\n        \"line_numbers\": True,\n        \"wrap\": \"word\",\n    }\n_record(\"configure\", {\"style\": config.get(\"style\", {}), \"behaviors\": config.get(\"behaviors\", {})})\n_save()\nemit(config)\n",
+            "created_at": "2026-06-20T11:20:27+00:00",
+            "updated_at": "2026-06-20T11:20:27+00:00",
+            "last_run_at": null,
+            "last_status": "never-run",
+            "last_error": null
+          }
+        ],
+        "output_events": []
+      },
+      "I11": {
+        "input_events": [],
+        "processors": [],
+        "output_events": [
+          {
+            "id": "output-3957743db8",
+            "kind": "output",
+            "name": "text-session:persistence-summary",
+            "event_type": "python",
+            "language": "python",
+            "enabled": true,
+            "source_path": null,
+            "code": "\nproject_dir = Path(manifest.get(\"output_directory\", manifest_path.parent if \"manifest_path\" in globals() else \".\")).resolve()\nstore_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"store_path\") or project_dir / \"text-session-store.json\")\nconfig_path = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"config_path\") or project_dir / \"text-session-config.json\")\nplugins_dir = Path(manifest.setdefault(\"text_editor_session\", {}).get(\"plugins_dir\") or project_dir / \"plugins\")\nexports_dir = project_dir / \"exports\"\nplugins_dir.mkdir(parents=True, exist_ok=True)\nexports_dir.mkdir(parents=True, exist_ok=True)\n\ndef _read_json(path, default):\n    path = Path(path)\n    if path.exists():\n        return json.loads(path.read_text(encoding=\"utf-8\"))\n    return json.loads(json.dumps(default))\n\ndef _write_json(path, value):\n    path = Path(path)\n    path.parent.mkdir(parents=True, exist_ok=True)\n    import os\n    import uuid\n    tmp = path.with_name(f\".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp\")\n    try:\n        tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + \"\\n\", encoding=\"utf-8\")\n        tmp.replace(path)\n    finally:\n        if tmp.exists():\n            tmp.unlink()\n\nstore = _read_json(store_path, {\"type\": \"pathfinder-text-session-store-v1\", \"documents\": {}, \"history\": []})\nconfig = _read_json(config_path, {\"type\": \"pathfinder-text-session-config-v1\", \"style\": {}, \"behaviors\": {}, \"plugins\": {}})\npayload = event.get(\"payload\", {}) if isinstance(event, dict) else {}\nif not isinstance(payload, dict):\n    payload = {\"value\": payload}\n\ndef _record(action, detail):\n    store.setdefault(\"history\", []).append({\n        \"at\": now_utc(),\n        \"state\": state_id,\n        \"action\": action,\n        \"detail\": detail,\n    })\n\ndef _documents():\n    return store.setdefault(\"documents\", {})\n\ndef _select_ids():\n    docs = _documents()\n    ids = payload.get(\"ids\")\n    if isinstance(ids, str):\n        return [ids]\n    if isinstance(ids, list):\n        return [str(item) for item in ids if str(item) in docs]\n    query = str(payload.get(\"query\", \"\")).lower()\n    if query:\n        return [\n            doc_id for doc_id, doc in docs.items()\n            if query in doc_id.lower()\n            or query in str(doc.get(\"title\", \"\")).lower()\n            or query in str(doc.get(\"content\", \"\")).lower()\n        ]\n    if payload.get(\"all\"):\n        return list(docs.keys())\n    doc_id = payload.get(\"id\")\n    return [str(doc_id)] if doc_id is not None else []\n\ndef _save():\n    _write_json(store_path, store)\n    _write_json(config_path, config)\n    manifest.setdefault(\"text_editor_session\", {})[\"store_path\"] = str(store_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"config_path\"] = str(config_path)\n    manifest.setdefault(\"text_editor_session\", {})[\"plugins_dir\"] = str(plugins_dir)\n\nsummary = {\n    \"manifest\": str(manifest_path),\n    \"session\": str(session_path) if session_path else None,\n    \"store\": str(store_path),\n    \"config\": str(config_path),\n    \"plugins\": str(plugins_dir),\n    \"document_count\": len(_documents()),\n    \"history_count\": len(store.get(\"history\", [])),\n}\nsummary_path = project_dir / \"text-session-summary.json\"\nsummary_path.write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding=\"utf-8\")\n_record(\"persist\", {\"summary_path\": str(summary_path)})\n_save()\nemit(summary)\n",
+            "created_at": "2026-06-20T11:20:27+00:00",
+            "updated_at": "2026-06-20T11:20:27+00:00",
+            "last_run_at": null,
+            "last_status": "never-run",
+            "last_error": null
+          }
+        ]
+      }
+    }
+  },
+  "text_editor_session": {
+    "store_path": "D:\\execute\\omicron\\pathfinder_text_editor_session\\text-session-store.json",
+    "config_path": "D:\\execute\\omicron\\pathfinder_text_editor_session\\text-session-config.json",
+    "plugins_dir": "D:\\execute\\omicron\\pathfinder_text_editor_session\\plugins",
+    "instruction_script": "D:\\execute\\omicron\\pathfinder_text_editor_session\\text-session-instruct.py",
+    "exports_dir": "D:\\execute\\omicron\\pathfinder_text_editor_session\\exports"
+  },
+  "validation_reports": [
+    {
+      "check": "state_image_size",
+      "status": "ok",
+      "side_length": 700
+    },
+    {
+      "check": "text_editor_state_count",
+      "status": "ok",
+      "count": 12
+    }
+  ],
+  "rollback_points": [
+    {
+      "sequence_index": 0,
+      "state_id": "I0"
+    },
+    {
+      "sequence_index": 1,
+      "state_id": "I1"
+    },
+    {
+      "sequence_index": 2,
+      "state_id": "I2"
+    },
+    {
+      "sequence_index": 3,
+      "state_id": "I3"
+    },
+    {
+      "sequence_index": 4,
+      "state_id": "I4"
+    },
+    {
+      "sequence_index": 5,
+      "state_id": "I5"
+    },
+    {
+      "sequence_index": 6,
+      "state_id": "I6"
+    },
+    {
+      "sequence_index": 7,
+      "state_id": "I7"
+    },
+    {
+      "sequence_index": 8,
+      "state_id": "I8"
+    },
+    {
+      "sequence_index": 9,
+      "state_id": "I9"
+    },
+    {
+      "sequence_index": 10,
+      "state_id": "I10"
+    },
+    {
+      "sequence_index": 11,
+      "state_id": "I11"
+    }
+  ],
+  "workspace_path": "D:\\execute\\omicron\\pathfinder_text_editor_session\\pathfinder.workspace.json",
+  "workspace_pixel_mode": "paths"
+}

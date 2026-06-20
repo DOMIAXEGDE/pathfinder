@@ -1,0 +1,8 @@
+{
+  "banks": 8,
+  "registers": 53,
+  "addresses": 227,
+  "non_empty_values": 197,
+  "current_bank_id": "1",
+  "dirty": false
+}

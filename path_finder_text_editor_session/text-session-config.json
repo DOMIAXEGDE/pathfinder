@@ -1,0 +1,23 @@
+{
+  "type": "pathfinder-text-session-config-v1",
+  "style": {
+    "font_family": "Consolas",
+    "font_size": 13,
+    "foreground": "#101828",
+    "background": "#FFFFFF",
+    "accent": "#35B7A6",
+    "line_numbers": true,
+    "wrap": "word"
+  },
+  "behaviors": {
+    "autosave": true,
+    "archive_on_delete": true,
+    "plugin_autoload": true,
+    "default_extension": ".txt",
+    "batch_export_format": "json"
+  },
+  "plugins": {
+    "directory": "D:\\execute\\omicron\\pathfinder_text_editor_session\\plugins",
+    "enabled": true
+  }
+}

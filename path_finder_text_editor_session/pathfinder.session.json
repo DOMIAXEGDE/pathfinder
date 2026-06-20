@@ -1,0 +1,30 @@
+{
+  "type": "pathfinder-session-v1",
+  "version": 1,
+  "created_at": "2026-06-20T11:16:56+00:00",
+  "updated_at": "2026-06-20T11:20:27+00:00",
+  "active_manifest_path": "D:\\execute\\omicron\\pathfinder_text_editor_session\\pathfinder.manifest.json",
+  "projects": [
+    {
+      "manifest_path": "D:\\execute\\omicron\\pathfinder_text_editor_session\\pathfinder.manifest.json",
+      "label": "pathfinder_text_editor_session",
+      "added_at": "2026-06-20T11:16:56+00:00",
+      "last_seen_at": "2026-06-20T11:20:27+00:00"
+    }
+  ],
+  "state_cursor": {
+    "manifest_path": "D:\\execute\\omicron\\pathfinder_text_editor_session\\pathfinder.manifest.json",
+    "state_id": "I0",
+    "sequence_index": 0,
+    "image_x": null,
+    "image_y": null,
+    "screen_x": null,
+    "screen_y": null,
+    "source": "instruction-script",
+    "payload": {},
+    "updated_at": "2026-06-20T11:20:27+00:00"
+  },
+  "recent_instruction_scripts": [
+    "D:\\execute\\omicron\\pathfinder_text_editor_session\\text-session-instruct.py"
+  ]
+}
