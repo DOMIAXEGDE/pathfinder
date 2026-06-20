@@ -5,7 +5,7 @@ a = Analysis(
     ['D:\\execute\\omicron\\pathfinder.py'],
     pathex=[],
     binaries=[('D:\\execute\\omicron\\basis_tensor.exe', '.')],
-    datas=[('D:\\execute\\omicron\\25.py', '.'), ('D:\\execute\\omicron\\pathfinder.md', '.'), ('D:\\execute\\omicron\\17.txt', '.')],
+    datas=[('D:\\execute\\omicron\\25.py', '.'), ('D:\\execute\\omicron\\pathfinder.md', '.'), ('D:\\execute\\omicron\\pathfinder_instruction_template.py', '.'), ('D:\\execute\\omicron\\17.txt', '.')],
     hiddenimports=['PIL.Image', 'PIL.ImageTk', 'tkinter', 'tkinter.filedialog', 'tkinter.messagebox'],
     hookspath=[],
     hooksconfig={},

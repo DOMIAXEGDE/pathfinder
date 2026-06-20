@@ -39,6 +39,7 @@ try {
     --specpath $PSScriptRoot `
     --add-data "$Root\25.py;." `
     --add-data "$Root\pathfinder.md;." `
+    --add-data "$Root\pathfinder_instruction_template.py;." `
     --add-data "$Root\17.txt;." `
     --add-binary "$Root\basis_tensor.exe;." `
     --hidden-import PIL.Image `
