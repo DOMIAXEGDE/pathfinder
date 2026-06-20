@@ -24,6 +24,8 @@ import shutil
 import subprocess
 import sys
 import textwrap
+import traceback
+import uuid
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
@@ -31,9 +33,17 @@ from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
 APP_NAME = "Pathfinder"
 MANIFEST_TYPE = "pathfinder-manifest-v1"
+SESSION_TYPE = "pathfinder-session-v1"
+STATE_PROGRAMMING_TYPE = "pathfinder-state-programming-v1"
 WORKSPACE_TYPE = "tensor-workspace-v1"
 COMPONENT_ORDER = ["p", "q", "m", "g", "alpha", "beta"]
 HEX_ALPHABET = "0123456789abcdef"
+HOOK_COLLECTIONS = {
+    "input": "input_events",
+    "process": "processors",
+    "processing": "processors",
+    "output": "output_events",
+}
 
 RGB_PATTERN = re.compile(
     r"^\s*(\d+)\s*:\s*rgb\s*\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)\s*$",
@@ -68,7 +78,10 @@ def require_pillow():
 
 def write_json(path: Path, data: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    payload = json.dumps(data, indent=2, ensure_ascii=False) + "\n"
+    tmp = path.with_name(f".{path.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp")
+    tmp.write_text(payload, encoding="utf-8")
+    os.replace(tmp, path)
 
 
 def read_json(path: Path) -> Any:
@@ -602,12 +615,21 @@ def build_workspace_from_manifest(manifest: Dict[str, Any], pixel_mode: str = "c
         workspace_set(ws, "6", str(i), "cell", cell, "runtime.surface")
     for i, report in enumerate(manifest.get("validation_reports", [])):
         workspace_set(ws, "7", str(i), "report", report, "validation.reports")
+
+    programming = manifest.get("state_programming", {})
+    for state_id, record in programming.get("states", {}).items():
+        reg = str(state_id).lstrip("I") or str(state_id)
+        workspace_set(ws, "8", reg, "state_id", state_id, "state.programming")
+        workspace_set(ws, "8", reg, "input_events", record.get("input_events", []), "state.programming")
+        workspace_set(ws, "8", reg, "processors", record.get("processors", []), "state.programming")
+        workspace_set(ws, "8", reg, "output_events", record.get("output_events", []), "state.programming")
     ws.dirty = False
     return ws
 
 
 def save_workspace(manifest: Dict[str, Any], workspace_path: Path, pixel_mode: str) -> Path:
     tensor = load_tensor_module()
+    ensure_state_programming(manifest)
     ws = build_workspace_from_manifest(manifest, pixel_mode=pixel_mode)
     write_json(workspace_path, ws.to_dict(include_meta=True))
     renderer = tensor.TensorRenderer(tensor.load_config(None))
@@ -758,6 +780,7 @@ def build_pathfinder(args: argparse.Namespace) -> int:
         "command_bindings": {"boot": states[0]["id"], "latest": states[-1]["id"]},
         "runtime_surfaces": [{"id": "tk-runtime", "renderer": "tkinter-canvas", "state_source": "bootstrap_sequence"}],
         "quadtree_cells": quadtree_cells_for_states(states),
+        "state_programming": default_state_programming(state["id"] for state in states),
         "validation_reports": [
             {"check": "square_seed", "status": "ok", "side_length": seed_image.width},
             {"check": "basis_tensor_json", "status": "ok", "path": as_abs(basis_json_path)},
@@ -778,6 +801,7 @@ def load_manifest(path: Path) -> Dict[str, Any]:
     manifest = read_json(path)
     if manifest.get("type") != MANIFEST_TYPE:
         raise ValueError(f"Not a Pathfinder manifest: {path}")
+    ensure_state_programming(manifest)
     return manifest
 
 
@@ -788,6 +812,7 @@ def manifest_state_map(manifest: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
 def print_status(manifest: Dict[str, Any]) -> None:
     basis = manifest.get("basis", {})
     seed_meta = basis.get("seed_metadata", {})
+    programming = manifest.get("state_programming", {})
     print(f"{manifest.get('name', APP_NAME)} manifest: {manifest.get('type')}")
     print(f"Seed: {manifest.get('seed_image')}")
     print(f"Output: {manifest.get('output_directory')}")
@@ -796,13 +821,189 @@ def print_status(manifest: Dict[str, Any]) -> None:
     print(f"Basis rows: {seed_meta.get('basis_row_count', len(basis.get('B_raw', [])))}")
     print(f"Basis address: {shorten(str(seed_meta.get('basis_address', '')), 36)}")
     print(f"Workspace: {manifest.get('workspace_path')}")
+    print(f"Programmable states: {len(programming.get('states', {}))}")
+
+
+def normalize_hook_kind(kind: str) -> str:
+    raw = str(kind).strip().lower()
+    if raw not in HOOK_COLLECTIONS:
+        raise ValueError(f"Unknown programming hook kind: {kind}. Use input, process, or output.")
+    if raw == "processing":
+        return "process"
+    return raw
+
+
+def default_state_programming(state_ids: Optional[Iterable[str]] = None) -> Dict[str, Any]:
+    programming = {
+        "type": STATE_PROGRAMMING_TYPE,
+        "version": 1,
+        "created_at": now_utc(),
+        "updated_at": now_utc(),
+        "states": {},
+    }
+    for state_id in state_ids or []:
+        programming["states"][str(state_id)] = {
+            "input_events": [],
+            "processors": [],
+            "output_events": [],
+        }
+    return programming
+
+
+def ensure_state_programming(manifest: Dict[str, Any]) -> Dict[str, Any]:
+    state_ids = [str(state["id"]) for state in manifest.get("image_states", [])]
+    programming = manifest.get("state_programming")
+    if not isinstance(programming, dict):
+        programming = default_state_programming(state_ids)
+        manifest["state_programming"] = programming
+    programming.setdefault("type", STATE_PROGRAMMING_TYPE)
+    programming.setdefault("version", 1)
+    programming.setdefault("created_at", now_utc())
+    programming.setdefault("states", {})
+    programming["updated_at"] = now_utc()
+    for state_id in state_ids:
+        ensure_state_programming_record(manifest, state_id)
+    return programming
+
+
+def ensure_state_programming_record(manifest: Dict[str, Any], state_id: str) -> Dict[str, Any]:
+    programming = manifest.setdefault("state_programming", default_state_programming())
+    states = programming.setdefault("states", {})
+    record = states.setdefault(
+        str(state_id),
+        {"input_events": [], "processors": [], "output_events": []},
+    )
+    record.setdefault("input_events", [])
+    record.setdefault("processors", [])
+    record.setdefault("output_events", [])
+    return record
+
+
+def new_hook_id(kind: str, name: str) -> str:
+    digest = sha256_text(f"{kind}:{name}:{now_utc()}:{uuid.uuid4().hex}")[:10]
+    return f"{kind}-{digest}"
+
+
+def make_programming_hook(
+    kind: str,
+    name: str,
+    code: str,
+    *,
+    event_type: str = "python",
+    enabled: bool = True,
+    source_path: Optional[str] = None,
+) -> Dict[str, Any]:
+    normalized = normalize_hook_kind(kind)
+    return {
+        "id": new_hook_id(normalized, name),
+        "kind": normalized,
+        "name": name or f"{normalized} hook",
+        "event_type": event_type or "python",
+        "language": "python",
+        "enabled": bool(enabled),
+        "source_path": source_path,
+        "code": code or "",
+        "created_at": now_utc(),
+        "updated_at": now_utc(),
+        "last_run_at": None,
+        "last_status": "never-run",
+        "last_error": None,
+    }
+
+
+def default_session_path_for_manifest(manifest_path: Path) -> Path:
+    return manifest_path.resolve().parent / "pathfinder.session.json"
+
+
+def create_session_data(manifest_path: Optional[Path] = None) -> Dict[str, Any]:
+    now = now_utc()
+    session = {
+        "type": SESSION_TYPE,
+        "version": 1,
+        "created_at": now,
+        "updated_at": now,
+        "active_manifest_path": as_abs(manifest_path) if manifest_path else None,
+        "projects": [],
+        "state_cursor": None,
+        "recent_instruction_scripts": [],
+    }
+    if manifest_path:
+        session["projects"].append(
+            {
+                "manifest_path": as_abs(manifest_path),
+                "label": manifest_path.resolve().parent.name or manifest_path.stem,
+                "added_at": now,
+            }
+        )
+    return session
+
+
+def load_session_file(path: Path) -> Dict[str, Any]:
+    data = read_json(path)
+    if data.get("type") != SESSION_TYPE:
+        raise ValueError(f"Not a Pathfinder session file: {path}")
+    data.setdefault("projects", [])
+    data.setdefault("recent_instruction_scripts", [])
+    return data
+
+
+def save_session_file(path: Path, session: Dict[str, Any]) -> None:
+    session["updated_at"] = now_utc()
+    write_json(path, session)
+
+
+def add_manifest_to_session(session: Dict[str, Any], manifest_path: Path, label: Optional[str] = None) -> None:
+    resolved = as_abs(manifest_path)
+    projects = session.setdefault("projects", [])
+    for project in projects:
+        if project.get("manifest_path") == resolved:
+            project["label"] = label or project.get("label") or manifest_path.resolve().parent.name
+            project["last_seen_at"] = now_utc()
+            session["active_manifest_path"] = resolved
+            return
+    projects.append(
+        {
+            "manifest_path": resolved,
+            "label": label or manifest_path.resolve().parent.name or manifest_path.stem,
+            "added_at": now_utc(),
+        }
+    )
+    session["active_manifest_path"] = resolved
+
+
+def resolve_state_token(controller: "RuntimeController", token: Optional[str]) -> str:
+    if token is None or token.lower() in {"current", "."}:
+        state_id = controller.current_state_id()
+        if state_id is None:
+            raise ValueError("No current state is available.")
+        return state_id
+    state_map = manifest_state_map(controller.manifest)
+    if token.isdigit():
+        seq = controller.sequence
+        index = int(token)
+        if index < 0 or index >= len(seq):
+            raise ValueError(f"Sequence index outside range: {index}")
+        return seq[index]
+    if token not in state_map:
+        raise ValueError(f"Unknown state: {token}")
+    return token
 
 
 class RuntimeController:
-    def __init__(self, manifest_path: Path):
+    def __init__(self, manifest_path: Path, session_path: Optional[Path] = None, create_session: bool = False):
         self.manifest_path = manifest_path.resolve()
         self.manifest = load_manifest(self.manifest_path)
+        ensure_state_programming(self.manifest)
         self.current_position = 0
+        if create_session and session_path is None:
+            session_path = default_session_path_for_manifest(self.manifest_path)
+        self.session_path: Optional[Path] = session_path.resolve() if session_path else None
+        self.session: Optional[Dict[str, Any]] = None
+        self.state_cursor: Dict[str, Any] = {}
+        if self.session_path:
+            self.open_session(self.session_path, create=create_session)
+        else:
+            self.set_cursor(source="runtime-start")
 
     @property
     def sequence(self) -> List[str]:
@@ -822,9 +1023,267 @@ class RuntimeController:
         return manifest_state_map(self.manifest).get(state_id)
 
     def save(self) -> None:
+        ensure_state_programming(self.manifest)
         write_json(self.manifest_path, self.manifest)
         workspace_path = Path(self.manifest.get("workspace_path", self.manifest_path.with_suffix(".workspace.json")))
         save_workspace(self.manifest, workspace_path, self.manifest.get("workspace_pixel_mode", "compact"))
+        if self.session_path and self.session:
+            self.sync_session()
+            save_session_file(self.session_path, self.session)
+
+    def open_session(self, path: Path, create: bool = False) -> str:
+        self.session_path = path.resolve()
+        if self.session_path.exists():
+            self.session = load_session_file(self.session_path)
+        elif create:
+            self.session = create_session_data(self.manifest_path)
+            save_session_file(self.session_path, self.session)
+        else:
+            raise FileNotFoundError(f"Session file does not exist: {self.session_path}")
+        add_manifest_to_session(self.session, self.manifest_path)
+        cursor = self.session.get("state_cursor")
+        if isinstance(cursor, dict) and cursor.get("manifest_path") == as_abs(self.manifest_path):
+            state_id = cursor.get("state_id")
+            if state_id in manifest_state_map(self.manifest):
+                if state_id in self.sequence:
+                    self.current_position = self.sequence.index(state_id)
+                self.state_cursor = dict(cursor)
+            else:
+                self.set_cursor(source="session-open")
+        else:
+            self.set_cursor(source="session-open")
+        self.sync_session()
+        return f"session {self.session_path}"
+
+    def sync_session(self) -> None:
+        if not self.session:
+            return
+        add_manifest_to_session(self.session, self.manifest_path)
+        self.session["state_cursor"] = dict(self.state_cursor)
+        self.session["active_manifest_path"] = as_abs(self.manifest_path)
+        self.session["updated_at"] = now_utc()
+
+    def save_session(self, path: Optional[Path] = None) -> str:
+        if path is not None:
+            self.session_path = path.resolve()
+        if self.session is None:
+            self.session = create_session_data(self.manifest_path)
+        if self.session_path is None:
+            self.session_path = default_session_path_for_manifest(self.manifest_path)
+        self.sync_session()
+        save_session_file(self.session_path, self.session)
+        return f"saved session {self.session_path}"
+
+    def set_cursor(
+        self,
+        state_id: Optional[str] = None,
+        *,
+        image_x: Optional[int] = None,
+        image_y: Optional[int] = None,
+        screen_x: Optional[int] = None,
+        screen_y: Optional[int] = None,
+        source: str = "runtime",
+        payload: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        selected_state = state_id or self.current_state_id()
+        if selected_state is None:
+            selected_state = ""
+        if selected_state and selected_state not in manifest_state_map(self.manifest):
+            raise ValueError(f"Unknown state for cursor: {selected_state}")
+        if selected_state in self.sequence:
+            self.current_position = self.sequence.index(selected_state)
+        self.state_cursor = {
+            "manifest_path": as_abs(self.manifest_path),
+            "state_id": selected_state,
+            "sequence_index": self.current_position,
+            "image_x": image_x,
+            "image_y": image_y,
+            "screen_x": screen_x,
+            "screen_y": screen_y,
+            "source": source,
+            "payload": payload or {},
+            "updated_at": now_utc(),
+        }
+        self.sync_session()
+        return self.state_cursor
+
+    def hook_collection(self, kind: str) -> str:
+        return HOOK_COLLECTIONS[normalize_hook_kind(kind)]
+
+    def add_hook(
+        self,
+        kind: str,
+        state_id: str,
+        name: str,
+        code: str,
+        *,
+        event_type: str = "python",
+        enabled: bool = True,
+        source_path: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        resolved_state = resolve_state_token(self, state_id)
+        record = ensure_state_programming_record(self.manifest, resolved_state)
+        hook = make_programming_hook(kind, name, code, event_type=event_type, enabled=enabled, source_path=source_path)
+        record[self.hook_collection(kind)].append(hook)
+        self.manifest["state_programming"]["updated_at"] = now_utc()
+        return hook
+
+    def list_hooks(self, state_id: Optional[str] = None) -> List[Dict[str, Any]]:
+        resolved_state = resolve_state_token(self, state_id)
+        record = ensure_state_programming_record(self.manifest, resolved_state)
+        hooks = []
+        for collection in ("input_events", "processors", "output_events"):
+            for hook in record.get(collection, []):
+                item = dict(hook)
+                item["state_id"] = resolved_state
+                item["collection"] = collection
+                hooks.append(item)
+        return hooks
+
+    def delete_hook(self, state_id: str, hook_id: str) -> bool:
+        resolved_state = resolve_state_token(self, state_id)
+        record = ensure_state_programming_record(self.manifest, resolved_state)
+        for collection in ("input_events", "processors", "output_events"):
+            original = list(record.get(collection, []))
+            record[collection] = [hook for hook in original if hook.get("id") != hook_id]
+            if len(record[collection]) != len(original):
+                self.manifest["state_programming"]["updated_at"] = now_utc()
+                return True
+        return False
+
+    def set_hook_enabled(self, state_id: str, hook_id: str, enabled: bool) -> bool:
+        resolved_state = resolve_state_token(self, state_id)
+        record = ensure_state_programming_record(self.manifest, resolved_state)
+        for collection in ("input_events", "processors", "output_events"):
+            for hook in record.get(collection, []):
+                if hook.get("id") == hook_id:
+                    hook["enabled"] = bool(enabled)
+                    hook["updated_at"] = now_utc()
+                    self.manifest["state_programming"]["updated_at"] = now_utc()
+                    return True
+        return False
+
+    def programming_context(self, state_id: str, hook: Dict[str, Any], event: Dict[str, Any], outputs: List[Any]) -> Dict[str, Any]:
+        state = manifest_state_map(self.manifest).get(state_id, {})
+
+        def emit(value: Any = None) -> Any:
+            outputs.append(value)
+            return value
+
+        def goto(token: str) -> str:
+            return self.goto_state(token)
+
+        context: Dict[str, Any] = {
+            "__name__": "__pathfinder_state_program__",
+            "controller": self,
+            "runtime": self,
+            "manifest": self.manifest,
+            "manifest_path": self.manifest_path,
+            "state": state,
+            "state_id": state_id,
+            "cursor": self.state_cursor,
+            "session": self.session,
+            "session_path": self.session_path,
+            "event": event,
+            "hook": hook,
+            "outputs": outputs,
+            "emit": emit,
+            "goto": goto,
+            "Path": Path,
+            "json": json,
+            "math": math,
+            "os": os,
+            "re": re,
+            "shlex": shlex,
+            "subprocess": subprocess,
+            "sys": sys,
+            "now_utc": now_utc,
+        }
+        return context
+
+    def run_hook(self, state_id: str, hook: Dict[str, Any], payload: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        if not hook.get("enabled", True):
+            return {"hook_id": hook.get("id"), "status": "skipped", "outputs": []}
+        outputs: List[Any] = []
+        event = {
+            "kind": hook.get("kind"),
+            "event_type": hook.get("event_type", "python"),
+            "payload": payload or {},
+            "state_cursor": dict(self.state_cursor),
+            "timestamp": now_utc(),
+        }
+        code = str(hook.get("code") or "")
+        source_path = hook.get("source_path")
+        if source_path and Path(source_path).exists():
+            code = Path(source_path).read_text(encoding="utf-8")
+        context = self.programming_context(state_id, hook, event, outputs)
+        try:
+            exec(compile(code, str(source_path or f"<pathfinder:{state_id}:{hook.get('id')}>"), "exec"), context, context)
+            handler = context.get("handle")
+            if callable(handler):
+                result = handler(context)
+                if result is not None:
+                    outputs.append(result)
+            elif "result" in context:
+                outputs.append(context["result"])
+            hook["last_run_at"] = now_utc()
+            hook["last_status"] = "ok"
+            hook["last_error"] = None
+            return {"hook_id": hook.get("id"), "status": "ok", "outputs": outputs}
+        except Exception as exc:
+            hook["last_run_at"] = now_utc()
+            hook["last_status"] = "error"
+            hook["last_error"] = "".join(traceback.format_exception_only(type(exc), exc)).strip()
+            raise
+
+    def run_hooks(self, kind: str, state_id: Optional[str] = None, payload: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any]]:
+        resolved_state = resolve_state_token(self, state_id)
+        self.set_cursor(resolved_state, source=f"run-{normalize_hook_kind(kind)}", payload=payload)
+        record = ensure_state_programming_record(self.manifest, resolved_state)
+        results = []
+        for hook in record.get(self.hook_collection(kind), []):
+            results.append(self.run_hook(resolved_state, hook, payload=payload))
+        self.manifest["state_programming"]["updated_at"] = now_utc()
+        return results
+
+    def run_all_state_behaviour(self, state_id: Optional[str] = None, payload: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any]]:
+        results: List[Dict[str, Any]] = []
+        for kind in ("input", "process", "output"):
+            results.extend(self.run_hooks(kind, state_id=state_id, payload=payload))
+        return results
+
+    def instruction_api(self) -> "PathfinderInstructionAPI":
+        return PathfinderInstructionAPI(self)
+
+    def run_instruction_script(self, path: Path) -> Any:
+        script_path = path.resolve()
+        code = script_path.read_text(encoding="utf-8")
+        api = self.instruction_api()
+        context = {
+            "__name__": "__pathfinder_instruction__",
+            "__file__": str(script_path),
+            "api": api,
+            "controller": self,
+            "runtime": self,
+            "manifest": self.manifest,
+            "manifest_path": self.manifest_path,
+            "session": self.session,
+            "session_path": self.session_path,
+            "Path": Path,
+            "json": json,
+            "os": os,
+            "sys": sys,
+            "subprocess": subprocess,
+        }
+        exec(compile(code, str(script_path), "exec"), context, context)
+        if self.session is not None:
+            recent = self.session.setdefault("recent_instruction_scripts", [])
+            script_text = as_abs(script_path)
+            if script_text in recent:
+                recent.remove(script_text)
+            recent.insert(0, script_text)
+            del recent[16:]
+        return context.get("result")
 
     def goto_state(self, token: str) -> str:
         seq = self.sequence
@@ -834,13 +1293,16 @@ class RuntimeController:
             if index < 0 or index >= len(seq):
                 raise ValueError(f"Sequence index outside range: {index}")
             self.current_position = index
+            self.set_cursor(seq[self.current_position], source="goto")
             return f"current {seq[self.current_position]}"
         if token in seq:
             self.current_position = seq.index(token)
+            self.set_cursor(token, source="goto")
             return f"current {token}"
         if token in state_map:
             self.manifest.setdefault("bootstrap_sequence", []).append(token)
             self.current_position = len(self.manifest["bootstrap_sequence"]) - 1
+            self.set_cursor(token, source="goto")
             return f"added {token} to sequence"
         raise ValueError(f"Unknown state: {token}")
 
@@ -853,7 +1315,7 @@ class RuntimeController:
         if cmd in {"help", "?"}:
             return (
                 "commands: status, boot, next, prev, goto <index|state>, sequence, "
-                "promote <state>, bind <name> <state>, save, export <path>, quit",
+                "promote <state>, bind <name> <state>, cursor, session, program, script, save, export <path>, quit",
                 False,
             )
         if cmd == "status":
@@ -861,14 +1323,17 @@ class RuntimeController:
             return f"current={state} states={len(self.manifest.get('image_states', []))} sequence={len(self.sequence)}", False
         if cmd == "boot":
             self.current_position = 0
+            self.set_cursor(source="boot")
             return f"current {self.current_state_id()}", False
         if cmd == "next":
             if self.sequence:
                 self.current_position = (self.current_position + 1) % len(self.sequence)
+                self.set_cursor(source="next")
             return f"current {self.current_state_id()}", False
         if cmd == "prev":
             if self.sequence:
                 self.current_position = (self.current_position - 1) % len(self.sequence)
+                self.set_cursor(source="prev")
             return f"current {self.current_state_id()}", False
         if cmd == "goto":
             if not args:
@@ -905,6 +1370,40 @@ class RuntimeController:
                 raise ValueError(f"Unknown state: {state_id}")
             self.manifest.setdefault("command_bindings", {})[name] = state_id
             return f"bound {name} -> {state_id}", True
+        if cmd == "cursor":
+            if args and args[0] == "set":
+                state_id = resolve_state_token(self, args[1] if len(args) > 1 else None)
+                image_x = int(args[2]) if len(args) > 2 and args[2] != "-" else None
+                image_y = int(args[3]) if len(args) > 3 and args[3] != "-" else None
+                self.set_cursor(state_id, image_x=image_x, image_y=image_y, source="shell")
+                return json.dumps(self.state_cursor, indent=2), True
+            return json.dumps(self.state_cursor, indent=2), False
+        if cmd == "session":
+            if not args or args[0] == "status":
+                return json.dumps(self.session or {"session_path": None}, indent=2), False
+            if args[0] == "create":
+                path = Path(args[1]).resolve() if len(args) > 1 else default_session_path_for_manifest(self.manifest_path)
+                self.session = create_session_data(self.manifest_path)
+                self.session_path = path
+                self.save_session(path)
+                return f"created session {path}", True
+            if args[0] == "open":
+                if len(args) < 2:
+                    raise ValueError("Usage: session open <path>")
+                return self.open_session(Path(args[1]), create=False), False
+            if args[0] == "save":
+                path = Path(args[1]).resolve() if len(args) > 1 else None
+                return self.save_session(path), False
+            if args[0] == "projects":
+                return json.dumps((self.session or {}).get("projects", []), indent=2), False
+            raise ValueError("Usage: session status|create [path]|open <path>|save [path]|projects")
+        if cmd == "program":
+            return self._cmd_program(args)
+        if cmd == "script":
+            if not args:
+                raise ValueError("Usage: script <instruction.py>")
+            result = self.run_instruction_script(Path(args[0]))
+            return f"ran script {Path(args[0]).resolve()}" + (f" -> {result}" if result is not None else ""), True
         if cmd == "save":
             self.save()
             return f"saved {self.manifest_path}", False
@@ -918,9 +1417,138 @@ class RuntimeController:
             return "quit", False
         raise ValueError(f"Unknown runtime command: {cmd}")
 
+    def _cmd_program(self, args: List[str]) -> Tuple[str, bool]:
+        if not args:
+            return "Usage: program list [state]|add <input|process|output> <state|current> <name> <file|code>|run <kind|all> [state]|del <state> <hook_id>|enable <state> <hook_id>|disable <state> <hook_id>", False
+        action = args[0]
+        if action == "list":
+            state_id = resolve_state_token(self, args[1] if len(args) > 1 else None)
+            hooks = self.list_hooks(state_id)
+            if not hooks:
+                return f"no programs for {state_id}", False
+            lines = []
+            for hook in hooks:
+                lines.append(
+                    f"{hook['state_id']} {hook.get('kind')} {hook.get('id')} "
+                    f"{'on' if hook.get('enabled', True) else 'off'} {hook.get('name')}"
+                )
+            return "\n".join(lines), False
+        if action == "add":
+            if len(args) < 5:
+                raise ValueError("Usage: program add <input|process|output> <state|current> <name> <file|code>")
+            kind, state_token, name = args[1], args[2], args[3]
+            source = " ".join(args[4:])
+            source_path: Optional[str] = None
+            possible_path = Path(source)
+            if possible_path.exists():
+                code = possible_path.read_text(encoding="utf-8")
+                source_path = as_abs(possible_path)
+            else:
+                code = source
+            hook = self.add_hook(kind, state_token, name, code, source_path=source_path)
+            return f"added {hook['kind']} program {hook['id']} to {resolve_state_token(self, state_token)}", True
+        if action == "run":
+            if len(args) < 2:
+                raise ValueError("Usage: program run <input|process|output|all> [state]")
+            kind = args[1]
+            state_id = args[2] if len(args) > 2 else None
+            if kind == "all":
+                results = self.run_all_state_behaviour(state_id, payload={"source": "shell"})
+            else:
+                results = self.run_hooks(kind, state_id=state_id, payload={"source": "shell"})
+            return json.dumps(results, indent=2, ensure_ascii=False), True
+        if action == "del":
+            if len(args) != 3:
+                raise ValueError("Usage: program del <state|current> <hook_id>")
+            deleted = self.delete_hook(args[1], args[2])
+            return "deleted" if deleted else "not found", deleted
+        if action in {"enable", "disable"}:
+            if len(args) != 3:
+                raise ValueError(f"Usage: program {action} <state|current> <hook_id>")
+            changed = self.set_hook_enabled(args[1], args[2], enabled=(action == "enable"))
+            return action if changed else "not found", changed
+        raise ValueError("Unknown program action. Use list, add, run, del, enable, or disable.")
+
+
+class PathfinderInstructionAPI:
+    """Small stable API exposed to user-authored Pathfinder instruction scripts."""
+
+    def __init__(self, controller: RuntimeController):
+        self.controller = controller
+
+    @property
+    def manifest(self) -> Dict[str, Any]:
+        return self.controller.manifest
+
+    @property
+    def session(self) -> Optional[Dict[str, Any]]:
+        return self.controller.session
+
+    def current_state_id(self) -> Optional[str]:
+        return self.controller.current_state_id()
+
+    def current_state(self) -> Optional[Dict[str, Any]]:
+        return self.controller.current_state()
+
+    def goto(self, state: str) -> str:
+        return self.controller.goto_state(state)
+
+    def set_cursor(self, state: Optional[str] = None, **kwargs: Any) -> Dict[str, Any]:
+        state_id = resolve_state_token(self.controller, state)
+        return self.controller.set_cursor(state_id, source="instruction-script", **kwargs)
+
+    def create_session(self, path: str | Path) -> str:
+        self.controller.session = create_session_data(self.controller.manifest_path)
+        self.controller.session_path = Path(path).resolve()
+        return self.controller.save_session(self.controller.session_path)
+
+    def open_session(self, path: str | Path) -> str:
+        return self.controller.open_session(Path(path), create=False)
+
+    def save(self) -> None:
+        self.controller.save()
+
+    def save_session(self, path: Optional[str | Path] = None) -> str:
+        return self.controller.save_session(Path(path) if path else None)
+
+    def add_input(self, state: str, name: str, code: str, event_type: str = "python") -> Dict[str, Any]:
+        return self.controller.add_hook("input", state, name, code, event_type=event_type)
+
+    def add_processor(self, state: str, name: str, code: str, event_type: str = "python") -> Dict[str, Any]:
+        return self.controller.add_hook("process", state, name, code, event_type=event_type)
+
+    def add_output(self, state: str, name: str, code: str, event_type: str = "python") -> Dict[str, Any]:
+        return self.controller.add_hook("output", state, name, code, event_type=event_type)
+
+    def add_hook(
+        self,
+        kind: str,
+        state: str,
+        name: str,
+        code: str,
+        event_type: str = "python",
+        source_path: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        return self.controller.add_hook(kind, state, name, code, event_type=event_type, source_path=source_path)
+
+    def run(self, kind: str = "all", state: Optional[str] = None, payload: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any]]:
+        if kind == "all":
+            return self.controller.run_all_state_behaviour(state, payload=payload)
+        return self.controller.run_hooks(kind, state_id=state, payload=payload)
+
+    def list_hooks(self, state: Optional[str] = None) -> List[Dict[str, Any]]:
+        return self.controller.list_hooks(state)
+
+    def delete_hook(self, state: str, hook_id: str) -> bool:
+        return self.controller.delete_hook(state, hook_id)
+
 
 def run_shell(args: argparse.Namespace) -> int:
-    controller = RuntimeController(Path(args.manifest))
+    controller = RuntimeController(
+        Path(args.manifest),
+        session_path=Path(args.session) if args.session else None,
+        create_session=args.create_session,
+    )
     print("Pathfinder runtime shell. Type help for commands, quit to exit.")
     while True:
         try:
@@ -943,9 +1571,13 @@ def run_shell(args: argparse.Namespace) -> int:
 def run_gui(args: argparse.Namespace) -> int:
     Image, _, ImageTk = require_pillow()
     import tkinter as tk
-    from tkinter import messagebox
+    from tkinter import filedialog, messagebox
 
-    controller = RuntimeController(Path(args.manifest))
+    controller = RuntimeController(
+        Path(args.manifest),
+        session_path=Path(args.session) if args.session else None,
+        create_session=args.create_session,
+    )
 
     root = tk.Tk()
     root.title("Pathfinder Runtime")
@@ -974,6 +1606,7 @@ def run_gui(args: argparse.Namespace) -> int:
     button.pack(side=tk.RIGHT, padx=(8, 0))
 
     tk_image_holder: Dict[str, Any] = {"image": None}
+    display_info: Dict[str, Any] = {}
 
     def log(text: str) -> None:
         side.insert(tk.END, text.rstrip() + "\n")
@@ -985,12 +1618,14 @@ def run_gui(args: argparse.Namespace) -> int:
         if not state:
             status.config(text="No state")
             tk_image_holder["image"] = None
+            display_info.clear()
             return
 
         path = Path(state["image_path"])
         if not path.exists():
             status.config(text=f"Missing image for {state['id']}: {path}")
             tk_image_holder["image"] = None
+            display_info.clear()
             return
 
         image = Image.open(path).convert("RGB")
@@ -999,6 +1634,7 @@ def run_gui(args: argparse.Namespace) -> int:
         if cw <= 20 or ch <= 20:
             status.config(text=f"{state['id']} | waiting for canvas layout")
             tk_image_holder["image"] = None
+            display_info.clear()
             return
 
         max_w = max(1, cw - 20)
@@ -1009,12 +1645,214 @@ def run_gui(args: argparse.Namespace) -> int:
         if display.width <= 0 or display.height <= 0:
             status.config(text=f"{state['id']} | image has no drawable size")
             tk_image_holder["image"] = None
+            display_info.clear()
             return
 
         tk_image = ImageTk.PhotoImage(display, master=root)
         tk_image_holder["image"] = tk_image
+        x0 = (cw - display.width) // 2
+        y0 = (ch - display.height) // 2
         canvas.create_image(cw // 2, ch // 2, image=tk_image, anchor=tk.CENTER)
+        display_info.clear()
+        display_info.update(
+            {
+                "state_id": state["id"],
+                "image_width": image.width,
+                "image_height": image.height,
+                "display_width": display.width,
+                "display_height": display.height,
+                "x0": x0,
+                "y0": y0,
+                "scale_x": image.width / display.width,
+                "scale_y": image.height / display.height,
+            }
+        )
         status.config(text=f"{state['id']} | {image.width}x{image.height} | {shorten(state['pixel_sha256'], 22)}")
+
+    def image_coords_from_event(event: Any) -> Tuple[Optional[int], Optional[int]]:
+        if not display_info:
+            return None, None
+        x0 = int(display_info["x0"])
+        y0 = int(display_info["y0"])
+        dw = int(display_info["display_width"])
+        dh = int(display_info["display_height"])
+        if event.x < x0 or event.x >= x0 + dw or event.y < y0 or event.y >= y0 + dh:
+            return None, None
+        image_x = int((event.x - x0) * float(display_info["scale_x"]))
+        image_y = int((event.y - y0) * float(display_info["scale_y"]))
+        image_x = max(0, min(int(display_info["image_width"]) - 1, image_x))
+        image_y = max(0, min(int(display_info["image_height"]) - 1, image_y))
+        return image_x, image_y
+
+    def program_template(kind: str, state_id: str) -> str:
+        if normalize_hook_kind(kind) == "input":
+            return (
+                "event_payload = event.get('payload', {})\n"
+                "emit({'input': event_payload, 'cursor': cursor, 'state': state_id})\n"
+            )
+        if normalize_hook_kind(kind) == "process":
+            return (
+                "state.setdefault('program_data', {})['processed_at'] = now_utc()\n"
+                "emit({'processed': state_id, 'cursor': cursor})\n"
+            )
+        return (
+            "output_path = Path(manifest.get('output_directory', '.')) / f'{state_id}.program-output.json'\n"
+            "output_path.write_text(json.dumps({'state': state_id, 'cursor': cursor}, indent=2), encoding='utf-8')\n"
+            "emit({'wrote': str(output_path)})\n"
+        )
+
+    def open_program_editor(kind: str) -> None:
+        state_id = controller.current_state_id()
+        if not state_id:
+            return
+        editor = tk.Toplevel(root)
+        editor.title(f"{APP_NAME} {normalize_hook_kind(kind)} program")
+        editor.geometry("760x540")
+        top_frame = tk.Frame(editor, padx=8, pady=8)
+        top_frame.pack(fill=tk.X)
+        tk.Label(top_frame, text="Name").pack(side=tk.LEFT)
+        name_var = tk.StringVar(value=f"{normalize_hook_kind(kind)}-{state_id}")
+        name_entry = tk.Entry(top_frame, textvariable=name_var)
+        name_entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(8, 8))
+        tk.Label(top_frame, text="Type").pack(side=tk.LEFT)
+        type_var = tk.StringVar(value="python")
+        type_entry = tk.Entry(top_frame, textvariable=type_var, width=18)
+        type_entry.pack(side=tk.LEFT, padx=(8, 0))
+        text = tk.Text(editor, wrap=tk.NONE, undo=True)
+        text.pack(fill=tk.BOTH, expand=True, padx=8, pady=(0, 8))
+        text.insert("1.0", program_template(kind, state_id))
+        bottom_frame = tk.Frame(editor, padx=8, pady=8)
+        bottom_frame.pack(fill=tk.X)
+
+        def save_program() -> None:
+            code = text.get("1.0", tk.END).rstrip()
+            hook = controller.add_hook(kind, state_id, name_var.get().strip(), code, event_type=type_var.get().strip())
+            log(f"added {hook['kind']} program {hook['id']} to {state_id}")
+            if args.autosave:
+                controller.save()
+            editor.destroy()
+
+        def load_script() -> None:
+            path = filedialog.askopenfilename(
+                title="Open Python instruction or hook file",
+                filetypes=[("Python files", "*.py"), ("All files", "*.*")],
+            )
+            if path:
+                text.delete("1.0", tk.END)
+                text.insert("1.0", Path(path).read_text(encoding="utf-8"))
+
+        tk.Button(bottom_frame, text="Load .py", command=load_script).pack(side=tk.LEFT)
+        tk.Button(bottom_frame, text="Save Program", command=save_program).pack(side=tk.RIGHT)
+        tk.Button(bottom_frame, text="Cancel", command=editor.destroy).pack(side=tk.RIGHT, padx=(0, 8))
+        name_entry.focus_set()
+
+    def show_programs() -> None:
+        state_id = controller.current_state_id()
+        if not state_id:
+            return
+        win = tk.Toplevel(root)
+        win.title(f"{APP_NAME} programs for {state_id}")
+        win.geometry("760x360")
+        listbox = tk.Listbox(win)
+        listbox.pack(fill=tk.BOTH, expand=True, padx=8, pady=8)
+        hooks = controller.list_hooks(state_id)
+
+        def refresh() -> None:
+            hooks[:] = controller.list_hooks(state_id)
+            listbox.delete(0, tk.END)
+            for hook in hooks:
+                status_text = "on" if hook.get("enabled", True) else "off"
+                listbox.insert(tk.END, f"{hook.get('kind')} {hook.get('id')} {status_text} {hook.get('name')}")
+
+        def selected_hook() -> Optional[Dict[str, Any]]:
+            selection = listbox.curselection()
+            if not selection:
+                return None
+            return hooks[selection[0]]
+
+        def toggle() -> None:
+            hook = selected_hook()
+            if not hook:
+                return
+            controller.set_hook_enabled(state_id, hook["id"], not hook.get("enabled", True))
+            if args.autosave:
+                controller.save()
+            refresh()
+
+        def delete() -> None:
+            hook = selected_hook()
+            if not hook:
+                return
+            if messagebox.askyesno("Pathfinder", f"Delete {hook.get('name')}?"):
+                controller.delete_hook(state_id, hook["id"])
+                if args.autosave:
+                    controller.save()
+                refresh()
+
+        buttons = tk.Frame(win, padx=8, pady=8)
+        buttons.pack(fill=tk.X)
+        tk.Button(buttons, text="Enable/Disable", command=toggle).pack(side=tk.LEFT)
+        tk.Button(buttons, text="Delete", command=delete).pack(side=tk.LEFT, padx=(8, 0))
+        tk.Button(buttons, text="Close", command=win.destroy).pack(side=tk.RIGHT)
+        refresh()
+
+    def run_programs(kind: str) -> None:
+        state_id = controller.current_state_id()
+        if not state_id:
+            return
+        try:
+            if kind == "all":
+                results = controller.run_all_state_behaviour(state_id, payload={"source": "gui", "cursor": controller.state_cursor})
+            else:
+                results = controller.run_hooks(kind, state_id=state_id, payload={"source": "gui", "cursor": controller.state_cursor})
+            log(json.dumps(results, indent=2, ensure_ascii=False))
+            if args.autosave:
+                controller.save()
+            render()
+        except Exception as exc:
+            messagebox.showerror("Pathfinder program error", str(exc))
+
+    def save_session_as() -> None:
+        initial = controller.session_path or default_session_path_for_manifest(controller.manifest_path)
+        path = filedialog.asksaveasfilename(
+            title="Save Pathfinder session",
+            initialdir=str(initial.parent),
+            initialfile=initial.name,
+            defaultextension=".json",
+            filetypes=[("Pathfinder session", "*.json"), ("All files", "*.*")],
+        )
+        if path:
+            log(controller.save_session(Path(path)))
+
+    def show_context_menu(event: Any) -> None:
+        state = controller.current_state()
+        if not state:
+            return
+        image_x, image_y = image_coords_from_event(event)
+        controller.set_cursor(
+            state["id"],
+            image_x=image_x,
+            image_y=image_y,
+            screen_x=event.x_root,
+            screen_y=event.y_root,
+            source="gui-context-menu",
+        )
+        menu = tk.Menu(root, tearoff=False)
+        menu.add_command(label=f"Cursor: {state['id']} ({image_x}, {image_y})", state=tk.DISABLED)
+        menu.add_separator()
+        menu.add_command(label="Add Input Event...", command=lambda: open_program_editor("input"))
+        menu.add_command(label="Add Processing Logic...", command=lambda: open_program_editor("process"))
+        menu.add_command(label="Add Output Event...", command=lambda: open_program_editor("output"))
+        menu.add_separator()
+        menu.add_command(label="Run Input Events", command=lambda: run_programs("input"))
+        menu.add_command(label="Run Processing Logic", command=lambda: run_programs("process"))
+        menu.add_command(label="Run Output Events", command=lambda: run_programs("output"))
+        menu.add_command(label="Run All State Behaviour", command=lambda: run_programs("all"))
+        menu.add_separator()
+        menu.add_command(label="Manage State Programs...", command=show_programs)
+        menu.add_command(label="Save Session As...", command=save_session_as)
+        menu.add_command(label="Save Manifest and Session", command=controller.save)
+        menu.tk_popup(event.x_root, event.y_root)
 
     def run_command() -> None:
         line = entry.get().strip()
@@ -1040,6 +1878,8 @@ def run_gui(args: argparse.Namespace) -> int:
     root.bind("<Left>", lambda _event: (controller.run("prev"), render()))
     root.bind("<Right>", lambda _event: (controller.run("next"), render()))
     canvas.bind("<Configure>", lambda _event: render())
+    canvas.bind("<Button-3>", show_context_menu)
+    canvas.bind("<Button-2>", show_context_menu)
     log("Pathfinder runtime ready. Type help for commands.")
     render()
     root.mainloop()
@@ -1064,6 +1904,7 @@ def run_desktop(args: argparse.Namespace) -> int:
     root.minsize(640, 420)
 
     manifest_var = tk.StringVar(value="")
+    session_var = tk.StringVar(value="")
     status_var = tk.StringVar(value="Ready")
 
     header = tk.Frame(root, padx=16, pady=14)
@@ -1095,6 +1936,41 @@ def run_desktop(args: argparse.Namespace) -> int:
 
     tk.Button(manifest_row, text="Open", command=choose_manifest, width=10).pack(side=tk.RIGHT, padx=(8, 0))
 
+    session_row = tk.Frame(body)
+    session_row.pack(fill=tk.X, pady=(0, 10))
+    session_entry = tk.Entry(session_row, textvariable=session_var)
+    session_entry.pack(side=tk.LEFT, fill=tk.X, expand=True)
+
+    def choose_session() -> None:
+        path = filedialog.askopenfilename(
+            title="Open Pathfinder session",
+            filetypes=[("Pathfinder session", "*.json"), ("All files", "*.*")],
+        )
+        if path:
+            session_var.set(path)
+            status_var.set(f"Selected session {path}")
+
+    def create_session() -> None:
+        manifest_text = manifest_var.get().strip()
+        initial_dir = Path(manifest_text).resolve().parent if manifest_text else default_projects_dir()
+        path = filedialog.asksaveasfilename(
+            title="Create Pathfinder session",
+            initialdir=str(initial_dir),
+            initialfile="pathfinder.session.json",
+            defaultextension=".json",
+            filetypes=[("Pathfinder session", "*.json"), ("All files", "*.*")],
+        )
+        if not path:
+            return
+        manifest_path = Path(manifest_text).resolve() if manifest_text else None
+        data = create_session_data(manifest_path)
+        save_session_file(Path(path), data)
+        session_var.set(path)
+        log(f"Created session: {path}")
+
+    tk.Button(session_row, text="Session", command=choose_session, width=10).pack(side=tk.RIGHT, padx=(8, 0))
+    tk.Button(session_row, text="New", command=create_session, width=8).pack(side=tk.RIGHT, padx=(8, 0))
+
     output = tk.Text(body, height=10, wrap=tk.WORD)
     output.pack(fill=tk.BOTH, expand=True)
 
@@ -1123,6 +1999,10 @@ def run_desktop(args: argparse.Namespace) -> int:
             build_pathfinder(ns)
             manifest = out_dir / "pathfinder.manifest.json"
             manifest_var.set(str(manifest))
+            if not session_var.get().strip():
+                session = out_dir / "pathfinder.session.json"
+                save_session_file(session, create_session_data(manifest))
+                session_var.set(str(session))
             log(f"Built demo runtime: {manifest}")
         except Exception as exc:
             messagebox.showerror("Pathfinder build failed", str(exc))
@@ -1133,7 +2013,13 @@ def run_desktop(args: argparse.Namespace) -> int:
             messagebox.showinfo("Pathfinder", "Open or build a manifest first.")
             return
         try:
-            ns = argparse.Namespace(manifest=path, autosave=True)
+            session_text = session_var.get().strip()
+            ns = argparse.Namespace(
+                manifest=path,
+                autosave=True,
+                session=session_text or None,
+                create_session=bool(session_text),
+            )
             root.withdraw()
             run_gui(ns)
             root.deiconify()
@@ -1173,6 +2059,72 @@ def command_workspace(args: argparse.Namespace) -> int:
     else:
         print(data, end="" if data.endswith("\n") else "\n")
     return 0
+
+
+def command_session(args: argparse.Namespace) -> int:
+    manifest_path = Path(args.manifest).resolve() if args.manifest else None
+    session_path = Path(args.session).resolve() if args.session else (
+        default_session_path_for_manifest(manifest_path) if manifest_path else Path("pathfinder.session.json").resolve()
+    )
+    if args.create:
+        save_session_file(session_path, create_session_data(manifest_path))
+        print(f"created session {session_path}")
+        return 0
+    if not session_path.exists():
+        raise FileNotFoundError(f"Session file does not exist: {session_path}")
+    session = load_session_file(session_path)
+    if manifest_path:
+        add_manifest_to_session(session, manifest_path)
+        save_session_file(session_path, session)
+    print(json.dumps(session, indent=2, ensure_ascii=False))
+    return 0
+
+
+def command_script(args: argparse.Namespace) -> int:
+    controller = RuntimeController(
+        Path(args.manifest),
+        session_path=Path(args.session) if args.session else None,
+        create_session=args.create_session,
+    )
+    result = controller.run_instruction_script(Path(args.file))
+    if args.autosave:
+        controller.save()
+    elif args.save_session and controller.session_path:
+        controller.save_session()
+    if result is not None:
+        print(json.dumps(result, indent=2, ensure_ascii=False) if not isinstance(result, str) else result)
+    print(f"ran instruction script {Path(args.file).resolve()}")
+    return 0
+
+
+def command_program(args: argparse.Namespace) -> int:
+    controller = RuntimeController(
+        Path(args.manifest),
+        session_path=Path(args.session) if args.session else None,
+        create_session=args.create_session,
+    )
+    if args.action == "list":
+        hooks = controller.list_hooks(args.state)
+        print(json.dumps(hooks, indent=2, ensure_ascii=False))
+        return 0
+    if args.action == "run":
+        if args.kind == "all":
+            results = controller.run_all_state_behaviour(args.state, payload={"source": "cli"})
+        else:
+            results = controller.run_hooks(args.kind, state_id=args.state, payload={"source": "cli"})
+        if args.autosave:
+            controller.save()
+        print(json.dumps(results, indent=2, ensure_ascii=False))
+        return 0
+    if args.action == "add":
+        code = Path(args.code_or_file).read_text(encoding="utf-8") if Path(args.code_or_file).exists() else args.code_or_file
+        source_path = as_abs(Path(args.code_or_file)) if Path(args.code_or_file).exists() else None
+        hook = controller.add_hook(args.kind, args.state, args.name, code, event_type=args.event_type, source_path=source_path)
+        if args.autosave:
+            controller.save()
+        print(json.dumps(hook, indent=2, ensure_ascii=False))
+        return 0
+    raise ValueError(f"Unsupported program action: {args.action}")
 
 
 def command_reconstruct(args: argparse.Namespace) -> int:
@@ -1256,16 +2208,54 @@ def build_parser() -> argparse.ArgumentParser:
 
     p_shell = sub.add_parser("shell", help="run the CLI-commanded runtime shell")
     p_shell.add_argument("--manifest", required=True)
+    p_shell.add_argument("--session", help="Pathfinder session persistence JSON")
+    p_shell.add_argument("--create-session", action="store_true", help="create --session when it does not exist")
     p_shell.add_argument("--autosave", action="store_true", help="save manifest/workspace after mutating commands")
     p_shell.set_defaults(func=run_shell)
 
     p_gui = sub.add_parser("gui", help="run the Tk graphical Pathfinder runtime")
     p_gui.add_argument("--manifest", required=True)
+    p_gui.add_argument("--session", help="Pathfinder session persistence JSON")
+    p_gui.add_argument("--create-session", action="store_true", help="create --session when it does not exist")
     p_gui.add_argument("--autosave", action="store_true", help="save manifest/workspace after mutating commands")
     p_gui.set_defaults(func=run_gui)
 
     p_desktop = sub.add_parser("desktop", help="open the Pathfinder desktop launcher")
     p_desktop.set_defaults(func=run_desktop)
+
+    p_session = sub.add_parser("session", help="create or inspect a Pathfinder development session")
+    p_session.add_argument("--manifest", help="project manifest to attach")
+    p_session.add_argument("--session", help="session JSON path")
+    p_session.add_argument("--create", action="store_true", help="create the session file")
+    p_session.set_defaults(func=command_session)
+
+    p_script = sub.add_parser("script", help="run a full-scope Python Pathfinder instruction script")
+    p_script.add_argument("--manifest", required=True)
+    p_script.add_argument("--file", required=True, help=".py instruction script")
+    p_script.add_argument("--session", help="Pathfinder session persistence JSON")
+    p_script.add_argument("--create-session", action="store_true", help="create --session when it does not exist")
+    p_script.add_argument("--autosave", action="store_true", help="save manifest/workspace after running")
+    p_script.add_argument("--save-session", action="store_true", help="save session even when --autosave is not used")
+    p_script.set_defaults(func=command_script)
+
+    p_program = sub.add_parser("program", help="list, add, or run per-state Python programs")
+    p_program.add_argument("--manifest", required=True)
+    p_program.add_argument("--session", help="Pathfinder session persistence JSON")
+    p_program.add_argument("--create-session", action="store_true", help="create --session when it does not exist")
+    p_program.add_argument("--autosave", action="store_true", help="save manifest/workspace after mutating commands")
+    program_sub = p_program.add_subparsers(dest="action", required=True)
+    p_program_list = program_sub.add_parser("list")
+    p_program_list.add_argument("--state", default="current")
+    p_program_run = program_sub.add_parser("run")
+    p_program_run.add_argument("kind", choices=["input", "process", "output", "all"])
+    p_program_run.add_argument("--state", default="current")
+    p_program_add = program_sub.add_parser("add")
+    p_program_add.add_argument("kind", choices=["input", "process", "output"])
+    p_program_add.add_argument("state")
+    p_program_add.add_argument("name")
+    p_program_add.add_argument("code_or_file")
+    p_program_add.add_argument("--event-type", default="python")
+    p_program.set_defaults(func=command_program)
 
     p_recon = sub.add_parser("reconstruct", help="reconstruct a square image from rgb.txt or hex.txt")
     p_recon.add_argument("--input", required=True)
