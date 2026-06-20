@@ -1,0 +1,73 @@
+{
+  "metadata": {
+    "program": "16.cpp deterministic basis-tensor generator",
+    "config_path": "17.txt",
+    "symbol_mode": "byte-symbol mode; alphabets and input lengths are decoded bytes",
+    "component_order": ["p","q","m","g","alpha","beta"],
+    "raw_dataset_name": "B_raw",
+    "residue_dataset_name": "B_residue",
+    "basis_wording": "basis tensor dataset refers to B_raw and B_residue together unless qualified; no linear algebra independence is claimed",
+    "finite_seed_scope": "A finite 17.txt configuration creates a finite raw row space and finite basis-address space; one finite run does not generate uncountable objects exactly",
+    "timestamps_enabled": false
+  },
+  "component_domains": [
+    {"name":"p","alphabet_size":"38","length_policy":{"mode":"variable","min":"1","max":"21"},"raw_domain_size":"1538287112104574653809592584365138","selected_residue_modulus":"1538287112104574653809592584365138"},
+    {"name":"q","alphabet_size":"38","length_policy":{"mode":"variable","min":"1","max":"21"},"raw_domain_size":"1538287112104574653809592584365138","selected_residue_modulus":"1538287112104574653809592584365138"},
+    {"name":"m","alphabet_size":"38","length_policy":{"mode":"variable","min":"1","max":"21"},"raw_domain_size":"1538287112104574653809592584365138","selected_residue_modulus":"1538287112104574653809592584365138"},
+    {"name":"g","alphabet_size":"38","length_policy":{"mode":"variable","min":"1","max":"21"},"raw_domain_size":"1538287112104574653809592584365138","selected_residue_modulus":"1538287112104574653809592584365138"},
+    {"name":"alpha","alphabet_size":"38","length_policy":{"mode":"variable","min":"1","max":"21"},"raw_domain_size":"1538287112104574653809592584365138","selected_residue_modulus":"1538287112104574653809592584365138"},
+    {"name":"beta","alphabet_size":"38","length_policy":{"mode":"variable","min":"1","max":"21"},"raw_domain_size":"1538287112104574653809592584365138","selected_residue_modulus":"1538287112104574653809592584365138"}
+  ],
+  "instances": [
+    {
+      "index": "0",
+      "components": [
+        {"name":"p","input_string":"pressure is great","char_length":17,"unique_count":10,"unique_symbols":["\\s","a","e","g","i","p","r","s","t","u"],"preview":"pressure\\sis\\sgreat","raw_id":"330893310590270041669065600","selected_residue_modulus":"1538287112104574653809592584365138","least_residue":"330893310590270041669065600","mapped_structure1_parameter":"-165446655295135020834532800"},
+        {"name":"q","input_string":"tone","char_length":4,"unique_count":4,"unique_symbols":["e","n","o","t"],"preview":"tone","raw_id":"1175991","selected_residue_modulus":"1538287112104574653809592584365138","least_residue":"1175991","mapped_structure1_parameter":"1175992"},
+        {"name":"m","input_string":"light weight","char_length":12,"unique_count":8,"unique_symbols":["\\s","e","g","h","i","l","t","w"],"preview":"light\\sweight","raw_id":"3165582149382946650","selected_residue_modulus":"1538287112104574653809592584365138","least_residue":"3165582149382946650","mapped_structure1_parameter":"-1582791074691473325"},
+        {"name":"g","input_string":"measurement","char_length":11,"unique_count":8,"unique_symbols":["a","e","m","n","r","s","t","u"],"preview":"measurement","raw_id":"88897314134697974","selected_residue_modulus":"1538287112104574653809592584365138","least_residue":"88897314134697974","mapped_structure1_parameter":"88897314134697975"},
+        {"name":"alpha","input_string":"span theory","char_length":11,"unique_count":11,"unique_symbols":["\\s","a","e","h","n","o","p","r","s","t","y"],"preview":"span\\stheory","raw_id":"128383438597889195","selected_residue_modulus":"1538287112104574653809592584365138","least_residue":"128383438597889195","mapped_structure1_parameter":"64191719298944598"},
+        {"name":"beta","input_string":"labelled data","char_length":13,"unique_count":7,"unique_symbols":["\\s","a","b","d","e","l","t"],"preview":"labelled\\sdata","raw_id":"118351620870275269215","selected_residue_modulus":"1538287112104574653809592584365138","least_residue":"118351620870275269215","mapped_structure1_parameter":"118351620870275269216"}
+      ],
+      "structure1_scalar": {
+        "p":"-165446655295135020834532800", "q":"1175992", "m":"-1582791074691473325", "g":"88897314134697975", "alpha":"64191719298944598", "beta":"118351620870275269216",
+        "reduced_exponent": {"alpha":"32095859649472299","beta":"59175810435137634608"},
+        "symbolic_expression": "a_0 = (-165446655295135020834532800 / 1175992) * ((-1582791074691473325 / 88897314134697975) ^ (64191719298944598 / 118351620870275269216))",
+        "real_admissibility_status": "complex_required"
+      },
+      "row_ordinal": "2850197763572419232302336751560839795016616559203726470844043564834834849068772166057708443831777839876233012987813336975691871532854366198582089501591846157995523029761243444349365652720900157"
+    },
+    {
+      "index": "1",
+      "components": [
+        {"name":"p","input_string":"gradient accumulation","char_length":21,"unique_count":14,"unique_symbols":["\\s","a","c","d","e","g","i","l","m","n","o","r","t","u"],"preview":"gradient\\saccumulation","raw_id":"335093900638070811505156688331662","selected_residue_modulus":"1538287112104574653809592584365138","least_residue":"335093900638070811505156688331662","mapped_structure1_parameter":"-167546950319035405752578344165831"},
+        {"name":"q","input_string":"set variable value","char_length":18,"unique_count":11,"unique_symbols":["\\s","a","b","e","i","l","r","s","t","u","v"],"preview":"set\\svariable\\svalue","raw_id":"14490877063282530088422896637","selected_residue_modulus":"1538287112104574653809592584365138","least_residue":"14490877063282530088422896637","mapped_structure1_parameter":"14490877063282530088422896638"},
+        {"name":"m","input_string":"iteration","char_length":9,"unique_count":7,"unique_symbols":["a","e","i","n","o","r","t"],"preview":"iteration","raw_id":"45900225043534","selected_residue_modulus":"1538287112104574653809592584365138","least_residue":"45900225043534","mapped_structure1_parameter":"-22950112521767"},
+        {"name":"g","input_string":"averaging","char_length":9,"unique_count":7,"unique_symbols":["a","e","g","i","n","r","v"],"preview":"averaging","raw_id":"11346718387369","selected_residue_modulus":"1538287112104574653809592584365138","least_residue":"11346718387369","mapped_structure1_parameter":"11346718387370"},
+        {"name":"alpha","input_string":"update","char_length":6,"unique_count":6,"unique_symbols":["a","d","e","p","t","u"],"preview":"update","raw_id":"1778899059","selected_residue_modulus":"1538287112104574653809592584365138","least_residue":"1778899059","mapped_structure1_parameter":"889449530"},
+        {"name":"beta","input_string":"symbol table","char_length":12,"unique_count":10,"unique_symbols":["\\s","a","b","e","l","m","o","s","t","y"],"preview":"symbol\\stable","raw_id":"4937002454159172703","selected_residue_modulus":"1538287112104574653809592584365138","least_residue":"4937002454159172703","mapped_structure1_parameter":"4937002454159172704"}
+      ],
+      "structure1_scalar": {
+        "p":"-167546950319035405752578344165831", "q":"14490877063282530088422896638", "m":"-22950112521767", "g":"11346718387370", "alpha":"889449530", "beta":"4937002454159172704",
+        "reduced_exponent": {"alpha":"444724765","beta":"2468501227079586352"},
+        "symbolic_expression": "a_1 = (-167546950319035405752578344165831 / 14490877063282530088422896638) * ((-22950112521767 / 11346718387370) ^ (889449530 / 4937002454159172704))",
+        "real_admissibility_status": "complex_required"
+      },
+      "row_ordinal": "2886380158249933057447066895500041986040142075702215148470216294849254739696369929608761572731589990605327588561192124938668392007800783895644712415710726573409500651638891013126364412785060241997977"
+    }
+  ],
+  "B_raw": [["330893310590270041669065600","1175991","3165582149382946650","88897314134697974","128383438597889195","118351620870275269215"],["335093900638070811505156688331662","14490877063282530088422896637","45900225043534","11346718387369","1778899059","4937002454159172703"]],
+  "B_residue": [["330893310590270041669065600","1175991","3165582149382946650","88897314134697974","128383438597889195","118351620870275269215"],["335093900638070811505156688331662","14490877063282530088422896637","45900225043534","11346718387369","1778899059","4937002454159172703"]],
+  "seed_metadata": {
+    "basis_policy": "ordered_with_repetition",
+    "basis_row_count": "2",
+    "row_space_size": "13250260269183146516045849339378563999313623174319085797176614960020798780859679671555978550930124690811317664152310857881131610584190768495135252333991911757493671299459174756018517937705714372357184",
+    "basis_address_space_size": "175569397201093430370969719614195099970296362199271771024308552487516734937506525263298773953940009852226720758537962675947011826855446045429192347144429428631833852611353234953173369523404978247723845587379132101155312127088526771779084408776735173694879127280821800447768451111394472017096479326208477907815647311623877053588363362827604167959104888929289542006510934166850524970310148624476409856",
+    "seed_length": "1",
+    "seed_radix": "175569397201093430370969719614195099970296362199271771024308552487516734937506525263298773953940009852226720758537962675947011826855446045429192347144429428631833852611353234953173369523404978247723845587379132101155312127088526771779084408776735173694879127280821800447768451111394472017096479326208477907815647311623877053588363362827604167959104888929289542006510934166850524970310148624476409856",
+    "basis_address": "37765862185978285848427094035710742871534573168664166242890248649307367983631470696851635038090089466144093400539189526112581639865161910974823147687260576150104059232629989162695759886713619402764896438695193108591263324552593706295436414710068676522070752907044582906448640330129445861023197660128288521657536985092959255860878334680534760476774762708985344607146721451764488658478647675865",
+    "canonical_seed_sequence": ["37765862185978285848427094035710742871534573168664166242890248649307367983631470696851635038090089466144093400539189526112581639865161910974823147687260576150104059232629989162695759886713619402764896438695193108591263324552593706295436414710068676522070752907044582906448640330129445861023197660128288521657536985092959255860878334680534760476774762708985344607146721451764488658478647675865"],
+    "addresses_dataset": "B_raw",
+    "residue_dataset": "B_residue"
+  }
+}
