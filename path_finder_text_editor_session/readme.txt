@@ -43,7 +43,4 @@ Or with the installed MSI executable:
 
 ```powershell
 Pathfinder.exe gui --manifest D:\execute\omicron\pathfinder_text_editor_session\pathfinder.manifest.json --session D:\execute\omicron\pathfinder_text_editor_session\pathfinder.session.json --autosave
-
-.\C:\Program Files\Pathfinder\Pathfinder.exe gui --manifest D:\execute\omicron\pathfinder_text_editor_session\pathfinder.manifest.json --session D:\execute\omicron\pathfinder_text_editor_session\pathfinder.session.json --autosave
-
 ```

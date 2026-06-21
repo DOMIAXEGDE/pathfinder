@@ -24,12 +24,28 @@ STORE_PATH = PROJECT_DIR / "text-session-store.json"
 CONFIG_PATH = PROJECT_DIR / "text-session-config.json"
 PLUGINS_DIR = PROJECT_DIR / "plugins"
 EXPORTS_DIR = PROJECT_DIR / "exports"
+SCRIPTS_DIR = PROJECT_DIR / "scripts"
 
 
 STATE_BY_OPERATION = {
     state.get("editor_operation"): state["id"]
     for state in manifest.get("image_states", [])
     if state.get("editor_operation")
+}
+
+
+SCRIPT_HOOKS = {
+    "crud.create": ("input", "text-session:singular-create", SCRIPTS_DIR / "input" / "singular_create.py"),
+    "crud.read": ("output", "text-session:singular-read", SCRIPTS_DIR / "output" / "singular_read.py"),
+    "crud.update": ("process", "text-session:singular-update", SCRIPTS_DIR / "process" / "singular_update.py"),
+    "crud.delete": ("process", "text-session:singular-delete", SCRIPTS_DIR / "process" / "singular_delete.py"),
+    "batch.create": ("input", "text-session:batch-create", SCRIPTS_DIR / "input" / "batch_create.py"),
+    "batch.read": ("output", "text-session:batch-read-export", SCRIPTS_DIR / "output" / "batch_read.py"),
+    "batch.update": ("process", "text-session:batch-update", SCRIPTS_DIR / "process" / "batch_update.py"),
+    "batch.delete": ("process", "text-session:batch-delete", SCRIPTS_DIR / "process" / "batch_delete.py"),
+    "python.plugins": ("process", "text-session:python-plugin-dispatch", SCRIPTS_DIR / "process" / "python_plugins.py"),
+    "config.style": ("process", "text-session:configuration-style", SCRIPTS_DIR / "process" / "config_style.py"),
+    "session.persistence": ("output", "text-session:persistence-summary", SCRIPTS_DIR / "output" / "session_persistence.py"),
 }
 
 
@@ -432,6 +448,7 @@ def ensure_defaults() -> None:
     PROJECT_DIR.mkdir(parents=True, exist_ok=True)
     PLUGINS_DIR.mkdir(parents=True, exist_ok=True)
     EXPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    SCRIPTS_DIR.mkdir(parents=True, exist_ok=True)
     if not STORE_PATH.exists():
         write_json(STORE_PATH, DEFAULT_STORE)
     if not CONFIG_PATH.exists():
@@ -457,9 +474,24 @@ def handle(editor):
             "config_path": str(CONFIG_PATH),
             "plugins_dir": str(PLUGINS_DIR),
             "exports_dir": str(EXPORTS_DIR),
+            "scripts_dir": str(SCRIPTS_DIR),
             "instruction_script": str(Path(__file__).resolve()),
         }
     )
+
+
+def restore_default_sequence() -> None:
+    def sort_key(state):
+        text = str(state.get("id", ""))
+        if text.startswith("I") and text[1:].isdigit():
+            return int(text[1:])
+        return int(state.get("index", 0))
+
+    manifest["bootstrap_sequence"] = [
+        state["id"]
+        for state in sorted(manifest.get("image_states", []), key=sort_key)
+        if state.get("id")
+    ]
 
 
 def install_hooks() -> None:
@@ -469,14 +501,19 @@ def install_hooks() -> None:
             if str(hook.get("name", "")).startswith("text-session:"):
                 api.delete_hook(state_id, hook["id"])
 
-    for operation, (kind, name, code) in HOOKS.items():
+    for operation, (kind, name, script_path) in SCRIPT_HOOKS.items():
         state_id = STATE_BY_OPERATION.get(operation)
         if not state_id:
             continue
-        api.add_hook(kind, state_id, name, code, event_type="python")
+        script_path = script_path.resolve()
+        if not script_path.exists():
+            raise FileNotFoundError(f"Missing text session hook script: {script_path}")
+        code = script_path.read_text(encoding="utf-8")
+        api.add_hook(kind, state_id, name, code, event_type="python", source_path=str(script_path))
 
 
 ensure_defaults()
+restore_default_sequence()
 install_hooks()
 api.set_cursor("I0")
 api.save_session(PROJECT_DIR / "pathfinder.session.json")
@@ -489,6 +526,7 @@ result = {
     "store": str(STORE_PATH),
     "config": str(CONFIG_PATH),
     "plugins": str(PLUGINS_DIR),
+    "scripts": str(SCRIPTS_DIR),
     "states": len(manifest.get("image_states", [])),
     "hooks": sum(len(api.list_hooks(state["id"])) for state in manifest.get("image_states", [])),
 }
